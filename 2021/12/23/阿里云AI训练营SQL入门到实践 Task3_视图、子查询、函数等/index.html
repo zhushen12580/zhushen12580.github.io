@@ -1,0 +1,557 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>阿里AI训练营SQL入门与实践task3 | 修の小破站</title><meta name="author" content="修"><meta name="copyright" content="修"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="介绍视图、子查询、函数~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里AI训练营SQL入门与实践task3">
+<meta property="og:url" content="https://zhushen12580.top/2021/12/23/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%20Task3_%E8%A7%86%E5%9B%BE%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%81%E5%87%BD%E6%95%B0%E7%AD%89/index.html">
+<meta property="og:site_name" content="修の小破站">
+<meta property="og:description" content="介绍视图、子查询、函数~">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg">
+<meta property="article:published_time" content="2021-12-23T07:05:40.000Z">
+<meta property="article:modified_time" content="2023-02-11T02:07:26.673Z">
+<meta property="article:author" content="修">
+<meta property="article:tag" content="SQL基础">
+<meta property="article:tag" content="训练营">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg"><link rel="shortcut icon" href="https://s2.loli.net/2023/01/10/rguK1npdW9s7z6a.png"><link rel="canonical" href="https://zhushen12580.top/2021/12/23/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%20Task3_%E8%A7%86%E5%9B%BE%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%81%E5%87%BD%E6%95%B0%E7%AD%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":730,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: 修","link":"Link: ","source":"Source: 修の小破站","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '阿里AI训练营SQL入门与实践task3',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-02-11 10:07:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"> <link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"> <link rel="stylesheet" href="/css/cat.css"> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&display=swap" rel="stylesheet"><div id="myscoll"></div><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2023/01/10/ZdfSPRT3r2LUOwy.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-archive"></i><span> 归档</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/talk/"><i class="fa-fw fas fa-music"></i><span> 说说</span></a></li><li><a class="site-page child" href="/CUSTOM/%E7%94%B5%E5%BD%B1%E5%89%A7%E7%85%A7.html"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-message"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 外链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">修の小破站</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-archive"></i><span> 归档</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/talk/"><i class="fa-fw fas fa-music"></i><span> 说说</span></a></li><li><a class="site-page child" href="/CUSTOM/%E7%94%B5%E5%BD%B1%E5%89%A7%E7%85%A7.html"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-message"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 外链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">阿里AI训练营SQL入门与实践task3</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-12-23T07:05:40.000Z" title="Created 2021-12-23 15:05:40">2021-12-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-02-11T02:07:26.673Z" title="Updated 2023-02-11 10:07:26">2023-02-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">3.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>14min</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="阿里AI训练营SQL入门与实践task3"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><ul>
+<li><p>视图</p>
+<ul>
+<li><p>视图是什么</p>
+<p>  视图是一个虚拟的表，视图是依据SELECT语句来创建的，所以操作视图时会根据创建视图的SELECT语句生成一张虚拟表，然后在这张虚拟表上做SQL操作。</p>
+<p>  [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-Rfsg9YGW-1640072423323)(<a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/60b35bc3-7acb-4e53-a896-b45d321aa244/Untitled.png">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/60b35bc3-7acb-4e53-a896-b45d321aa244/Untitled.png</a>)]</p>
+</li>
+<li><p>视图存在的意义</p>
+<ol>
+<li>通过定义视图可以将频繁使用的SELECT语句保存以提高效率。</li>
+<li>通过定义视图可以使用户看到的数据更加清晰。</li>
+<li>通过定义视图可以不对外公开数据表全部字段，增强数据的保密性。</li>
+<li>通过定义视图可以降低数据的冗余。</li>
+</ol>
+</li>
+<li><p>视图的操作</p>
+<ul>
+<li><p>创建视图</p>
+<ul>
+<li><p>语法</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> <span class="operator">&lt;</span>视图名称<span class="operator">&gt;</span>(<span class="operator">&lt;</span>列名<span class="number">1</span><span class="operator">&gt;</span>,<span class="operator">&lt;</span>列名<span class="number">2</span><span class="operator">&gt;</span>,...) <span class="keyword">AS</span> <span class="operator">&lt;</span><span class="keyword">SELECT</span>语句<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意事项</p>
+<p>  1.SELECT 语句中列的排列顺序和视图中列的排列顺序相同</p>
+<p>  2.视图不仅可以基于真实表，也可以在视图的基础上继续创建视图。(不建议)</p>
+<p>  3.一般的DBMS中定义视图时不能使用ORDER BY语句。(mysql可以)</p>
+<p>  4.视图表名要是唯一的。</p>
+</li>
+<li><p>基于单表的视图</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> productsum (product_type, cnt_product)</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> product_type, <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line">  <span class="keyword">FROM</span> product</span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type ;</span><br></pre></td></tr></table></figure>
+<p>  [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-HmGQUqO7-1640072423327)(<a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ef67eb7c-4198-4249-8cd4-29b5b3999683/Untitled.png">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ef67eb7c-4198-4249-8cd4-29b5b3999683/Untitled.png</a>)]</p>
+</li>
+<li><p>基于多表的视图</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_shop_product(product_type, sale_price, shop_name)</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> product_type, sale_price, shop_name</span><br><span class="line">  <span class="keyword">FROM</span> product,</span><br><span class="line">       shop_product</span><br><span class="line"> <span class="keyword">WHERE</span> product.product_id <span class="operator">=</span> shop_product.product_id;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改视图结构</p>
+<ul>
+<li><p>语法：</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">VIEW</span> <span class="operator">&lt;</span>视图名<span class="operator">&gt;</span> <span class="keyword">AS</span> <span class="operator">&lt;</span><span class="keyword">SELECT</span>语句<span class="operator">&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例子：</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">VIEW</span> productSum</span><br><span class="line">    <span class="keyword">AS</span></span><br><span class="line">        <span class="keyword">SELECT</span> product_type, sale_price</span><br><span class="line">          <span class="keyword">FROM</span> Product</span><br><span class="line">         <span class="keyword">WHERE</span> regist_date <span class="operator">&gt;</span> <span class="string">&#x27;2009-09-11&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>  [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-oPm1rAMR-1640072423329)(<a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fd070f3d-ae9c-4d49-8891-aa9c16291b73/Untitled.png">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fd070f3d-ae9c-4d49-8891-aa9c16291b73/Untitled.png</a>)]</p>
+</li>
+</ul>
+</li>
+<li><p>更新视图内容</p>
+<ul>
+<li>对于一个视图来说，如果包含以下结构的任意一种都是不可以被更新的：<ul>
+<li>聚合函数 SUM()、MIN()、MAX()、COUNT() 等。</li>
+<li>DISTINCT 关键字。</li>
+<li>GROUP BY 子句。</li>
+<li>HAVING 子句。</li>
+<li>UNION 或 UNION ALL 运算符。</li>
+<li>FROM 子句中包含多个表。</li>
+</ul>
+</li>
+<li><p>例子：</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> productsum</span><br><span class="line">   <span class="keyword">SET</span> sale_price <span class="operator">=</span> <span class="string">&#x27;5000&#x27;</span></span><br><span class="line"> <span class="keyword">WHERE</span> product_type <span class="operator">=</span> <span class="string">&#x27;办公用品&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>  更新视图数据，相关原表的数据也会更新，不过只能修改透过窗口能看到的内容。(因此不建议通过视图来修改表)</p>
+</li>
+</ul>
+</li>
+<li><p>删除视图</p>
+<ul>
+<li><p>语法：</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> <span class="operator">&lt;</span>视图名<span class="number">1</span><span class="operator">&gt;</span> [ , <span class="operator">&lt;</span>视图名<span class="number">2</span><span class="operator">&gt;</span> …]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>例子：</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">VIEW</span> productSum;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>子查询</p>
+<ul>
+<li><p>什么是子查询</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> stu_name</span><br><span class="line"><span class="keyword">FROM</span> (</span><br><span class="line">         <span class="keyword">SELECT</span> stu_name, <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> stu_cnt</span><br><span class="line">          <span class="keyword">FROM</span> students_info</span><br><span class="line">          <span class="keyword">GROUP</span> <span class="keyword">BY</span> stu_age) <span class="keyword">AS</span> studentSum;</span><br></pre></td></tr></table></figure>
+<p>  子查询指一个查询语句嵌套在另一个查询语句内部的查询，在 SELECT 子句中先计算子查询，子查询结果作为外层另一个查询的过滤条件，查询可以基于一个表或者多个表。</p>
+</li>
+<li><p>子查询和视图的关系</p>
+<p>  子查询是一次性的，而视图是存储在介质中的。</p>
+</li>
+<li><p>嵌套子查询</p>
+<p>  一个子查询嵌套一个子查询,尽量避免使用。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--例子：</span></span><br><span class="line"><span class="keyword">SELECT</span> product_type, cnt_product</span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">        <span class="keyword">FROM</span> (<span class="keyword">SELECT</span> product_type, </span><br><span class="line">                      <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">AS</span> cnt_product</span><br><span class="line">                <span class="keyword">FROM</span> product </span><br><span class="line">               <span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type) <span class="keyword">AS</span> productsum</span><br><span class="line">       <span class="keyword">WHERE</span> cnt_product <span class="operator">=</span> <span class="number">4</span>) <span class="keyword">AS</span> productsum2;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>标量子查询</p>
+<p>  返回表中具体的某一行的某一列数据</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--例子：如下表格</span></span><br><span class="line">product_id <span class="operator">|</span> product_name <span class="operator">|</span> sale_price </span><br><span class="line"><span class="comment">------------+-------------+----------</span></span><br><span class="line"><span class="number">0003</span>       <span class="operator">|</span> 运动T恤       <span class="operator">|</span> <span class="number">4000</span> </span><br><span class="line"><span class="number">0004</span>       <span class="operator">|</span> 菜刀          <span class="operator">|</span> <span class="number">3000</span> </span><br><span class="line"><span class="number">0005</span>       <span class="operator">|</span> 高压锅        <span class="operator">|</span> <span class="number">6800</span></span><br><span class="line"><span class="comment">--执行一次标量子查询后是要返回类似于，“0004”，“菜刀”这样的结果。</span></span><br></pre></td></tr></table></figure>
+<p>  由于标量子查询的特性，导致标量子查询不仅仅局限于 WHERE 子句中，通常任何可以使用单一值的位置都可以使用。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--例子：</span></span><br><span class="line"><span class="keyword">SELECT</span> product_id,</span><br><span class="line">       product_name,</span><br><span class="line">       sale_price,</span><br><span class="line">       (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sale_price)</span><br><span class="line">          <span class="keyword">FROM</span> product) <span class="keyword">AS</span> avg_price</span><br><span class="line">  <span class="keyword">FROM</span> product;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关联子查询</p>
+<p>  关联子查询就是通过一些标志将内外两层的查询连接起来起到过滤数据的目的。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--例子：选取出各商品种类中高于该商品种类的平均销售单价的商品</span></span><br><span class="line"><span class="keyword">SELECT</span> product_type, product_name, sale_price</span><br><span class="line">  <span class="keyword">FROM</span> product ASp1</span><br><span class="line"> <span class="keyword">WHERE</span> sale_price <span class="operator">&gt;</span> (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sale_price)</span><br><span class="line">   <span class="keyword">FROM</span> product ASp2</span><br><span class="line">                      <span class="keyword">WHERE</span> p1.product_type <span class="operator">=</span>p2.product_type</span><br><span class="line">   <span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type);</span><br></pre></td></tr></table></figure>
+<p>  关联子查询<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/41844742?spm=5176.21852664.0.0.5c6b11b7ksTLVC">执行过程</a>：</p>
+<ol>
+<li>首先执行不带WHERE的主查询</li>
+<li>根据主查询讯结果匹配product_type，获取子查询结果</li>
+<li>将子查询结果再与主查询结合执行完整的SQL语句</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>函数</p>
+<p>  所谓函数，类似一个黑盒子，你给它一个输入值，它便按照预设的程序定义给出返回值，输入值称为参数。</p>
+<ul>
+<li><p>算术函数</p>
+<ul>
+<li><p><strong>ABS</strong>-绝对值</p>
+<p>  ABS函数用于计算也该数字的绝对值，表示一个数到原点的距离。(NULL的绝对值也是NULL)</p>
+</li>
+<li><p><strong>MOD</strong>-求余数</p>
+<p>  语法：<strong><code>MOD( 被除数，除数 )</code></strong></p>
+</li>
+<li><p><strong>ROUND</strong>-四舍五入</p>
+<p>  语法：<strong><code>ROUND( 对象数值，保留小数的位数 )</code></strong></p>
+</li>
+<li><p>例子：</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m,</span><br><span class="line"><span class="built_in">ABS</span>(m)ASabs_col ,</span><br><span class="line">n, p,</span><br><span class="line"><span class="built_in">MOD</span>(n, p) <span class="keyword">AS</span> mod_col,</span><br><span class="line">ROUND(m,<span class="number">1</span>)ASround_colS</span><br><span class="line"><span class="keyword">FROM</span> samplemath;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>字符串函数</p>
+<ul>
+<li><p><strong>CONCAT</strong>-拼接</p>
+<p>  语法：<strong><code>CONCAT(str1, str2, str3)</code></strong></p>
+<p>  MySQL中使用 CONCAT 函数进行拼接。</p>
+</li>
+<li><p><strong>LENGTH</strong>-字符串长度</p>
+<p>  语法：<strong><code>LENGTH( 字符串 )</code></strong></p>
+</li>
+<li><p><strong>LOWER</strong>-小写转换</p>
+<p>  LOWER 函数只能针对英文字母使用，它会将参数中的字符串全都转换为小写。</p>
+</li>
+<li><p><strong>REPLACE</strong>-字符串的替换</p>
+<p>  语法：<strong><code>REPLACE( 对象字符串，替换前的字符串，替换后的字符串 )</code></strong></p>
+</li>
+<li><p><strong>SUBSTRING</strong>-字符串的截取</p>
+<p>  语法：<strong><code>SUBSTRING （对象字符串 FROM 截取的起始位置 FOR 截取的字符数）</code></strong></p>
+<p>  使用 SUBSTRING 函数 可以截取出字符串中的一部分字符串。截取的起始位置从字符串最左侧开始计算，索引值起始为1。</p>
+</li>
+<li><p><strong>SUBSTRING_INDEX –</strong> 字符串按索引截取</p>
+<p>  语法：<strong><code>SUBSTRING_INDEX (原始字符串， 分隔符，n)</code></strong></p>
+<p>  该函数用来获取原始字符串按照分隔符分割后，第 n 个分隔符之前（或之后）的子字符串</p>
+</li>
+</ul>
+</li>
+<li><p>日期函数</p>
+<ul>
+<li><p>CURRENT-获取当前日期</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CURRENT_DATE</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="built_in">CURRENT_DATE</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">2020</span><span class="number">-08</span><span class="number">-08</span>   <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CURRENT_TIME-当前时间</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CURRENT_TIME</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="built_in">CURRENT_TIME</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">17</span>:<span class="number">26</span>:<span class="number">09</span>     <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>CURRNT_TIMESTAMP-当前日期和时间</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CURRENT_TIMESTAMP</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">---------------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="built_in">CURRENT_TIMESTAMP</span>   <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">2020</span><span class="number">-08</span><span class="number">-08</span> <span class="number">17</span>:<span class="number">27</span>:<span class="number">07</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>EXTRACT-截取日期元素</p>
+<p>  语法：<strong><code>EXTRACT(日期元素 FROM 日期)</code></strong></p>
+<p>  使用 EXTRACT 函数可以截取出日期数据中的一部分，例如“年”</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CURRENT_TIMESTAMP</span> <span class="keyword">as</span> now,</span><br><span class="line"><span class="built_in">EXTRACT</span>(<span class="keyword">YEAR</span>   <span class="keyword">FROM</span> <span class="built_in">CURRENT_TIMESTAMP</span>) <span class="keyword">AS</span> <span class="keyword">year</span>,</span><br><span class="line"><span class="built_in">EXTRACT</span>(<span class="keyword">MONTH</span>  <span class="keyword">FROM</span> <span class="built_in">CURRENT_TIMESTAMP</span>) <span class="keyword">AS</span> <span class="keyword">month</span>,</span><br><span class="line"><span class="built_in">EXTRACT</span>(<span class="keyword">DAY</span>    <span class="keyword">FROM</span> <span class="built_in">CURRENT_TIMESTAMP</span>) <span class="keyword">AS</span> <span class="keyword">day</span>,</span><br><span class="line"><span class="built_in">EXTRACT</span>(<span class="keyword">HOUR</span>   <span class="keyword">FROM</span> <span class="built_in">CURRENT_TIMESTAMP</span>) <span class="keyword">AS</span> <span class="keyword">hour</span>,</span><br><span class="line"><span class="built_in">EXTRACT</span>(<span class="keyword">MINUTE</span> <span class="keyword">FROM</span> <span class="built_in">CURRENT_TIMESTAMP</span>) <span class="keyword">AS</span> <span class="keyword">MINute</span>,</span><br><span class="line"><span class="built_in">EXTRACT</span>(<span class="keyword">SECOND</span> <span class="keyword">FROM</span> <span class="built_in">CURRENT_TIMESTAMP</span>) <span class="keyword">AS</span> <span class="keyword">second</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">---------------------+------+-------+------+------+--------+--------+</span></span><br><span class="line"><span class="operator">|</span> now                 <span class="operator">|</span> <span class="keyword">year</span> <span class="operator">|</span> <span class="keyword">month</span> <span class="operator">|</span> <span class="keyword">day</span>  <span class="operator">|</span> <span class="keyword">hour</span> <span class="operator">|</span> <span class="keyword">MINute</span> <span class="operator">|</span> <span class="keyword">second</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------------+------+-------+------+------+--------+--------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">2020</span><span class="number">-08</span><span class="number">-08</span> <span class="number">17</span>:<span class="number">34</span>:<span class="number">38</span> <span class="operator">|</span> <span class="number">2020</span> <span class="operator">|</span>     <span class="number">8</span> <span class="operator">|</span>    <span class="number">8</span> <span class="operator">|</span>   <span class="number">17</span> <span class="operator">|</span>     <span class="number">34</span> <span class="operator">|</span>     <span class="number">38</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------------------+------+-------+------+------+--------+--------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>转换函数</p>
+<p>  “转换”这个词的含义非常广泛，在 SQL 中主要有两层意思：一是数据类型的转换，简称为类型转换，在英语中称为<strong><code>cast</code></strong>；另一层意思是值的转换。</p>
+<ul>
+<li><p>CAST-类型转换</p>
+<p>  语法：<strong><code>CAST（转换前的值 AS 想要转换的数据类型）</code></strong></p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 将字符串类型转换为数值类型</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CAST</span>(<span class="string">&#x27;0001&#x27;</span> <span class="keyword">AS</span> SIGNED <span class="type">INTEGER</span>) <span class="keyword">AS</span> int_col;</span><br><span class="line"><span class="operator">+</span><span class="comment">---------+</span></span><br><span class="line"><span class="operator">|</span> int_col <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------+</span></span><br><span class="line"><span class="operator">|</span>       <span class="number">1</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">---------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"><span class="comment">-- 将字符串类型转换为日期类型</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">CAST</span>(<span class="string">&#x27;2009-12-14&#x27;</span> <span class="keyword">AS</span> <span class="type">DATE</span>) <span class="keyword">AS</span> date_col;</span><br><span class="line"><span class="operator">+</span><span class="comment">------------+</span></span><br><span class="line"><span class="operator">|</span> date_col   <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="number">2009</span><span class="number">-12</span><span class="number">-14</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>COALESCE – 将NULL转换为其他值</p>
+<p>  语法：<strong><code>COALESCE(数据1，数据2，数据3……)</code></strong></p>
+<p>  COALESCE 是 SQL 特有的函数。该函数会返回可变参数 A 中左侧开始第1个不是NULL的值。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COALESCE</span>(<span class="keyword">NULL</span>, <span class="number">11</span>) <span class="keyword">AS</span> col_1,</span><br><span class="line"><span class="built_in">COALESCE</span>(<span class="keyword">NULL</span>, <span class="string">&#x27;hello world&#x27;</span>, <span class="keyword">NULL</span>) <span class="keyword">AS</span> col_2,</span><br><span class="line"><span class="built_in">COALESCE</span>(<span class="keyword">NULL</span>, <span class="keyword">NULL</span>, <span class="string">&#x27;2020-11-01&#x27;</span>) <span class="keyword">AS</span> col_3;</span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------------+------------+</span></span><br><span class="line"><span class="operator">|</span> col_1 <span class="operator">|</span> col_2       <span class="operator">|</span> col_3      <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------------+------------+</span></span><br><span class="line"><span class="operator">|</span>    <span class="number">11</span> <span class="operator">|</span> hello world <span class="operator">|</span> <span class="number">2020</span><span class="number">-11</span><span class="number">-01</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------+-------------+------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>谓词</p>
+<p>  谓词就是返回值为真值的函数。包括<strong><code>TRUE / FALSE / UNKNOWN</code></strong>。</p>
+<p>  谓词主要有以下几个：</p>
+<ul>
+<li><p><strong>LIKE</strong>-用于字符串的模糊查询</p>
+<p>  <strong><code>_</code></strong>下划线匹配任意 1 个字符</p>
+<p>  <code>%</code> 匹配任意个任意字符</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--例子：查询ddd开头的数据</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> samplelike</span><br><span class="line"><span class="keyword">WHERE</span> strcol <span class="keyword">LIKE</span> <span class="string">&#x27;ddd%&#x27;</span>;</span><br><span class="line"><span class="comment">--例子：查询中间有ddd的数据</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> samplelike</span><br><span class="line"><span class="keyword">WHERE</span> strcol <span class="keyword">LIKE</span> <span class="string">&#x27;%ddd%&#x27;</span>;</span><br><span class="line"><span class="comment">--查询结尾有ddd的数据</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> samplelike</span><br><span class="line"><span class="keyword">WHERE</span> strcol <span class="keyword">LIKE</span> <span class="string">&#x27;%ddd&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>BETWEEN</strong>– 用于范围查询</p>
+<p>  使用 BETWEEN 可以进行范围查询，包含临界值。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 选取销售单价为100～ 1000元的商品</span></span><br><span class="line"><span class="keyword">SELECT</span> product_name, sale_price</span><br><span class="line"><span class="keyword">FROM</span> product</span><br><span class="line"><span class="keyword">WHERE</span> sale_price <span class="keyword">BETWEEN</span> <span class="number">100</span> <span class="keyword">AND</span> <span class="number">1000</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>IS NULL</strong>、<strong>IS NOT NULL</strong>– 用于判断是否为NULL</p>
+<p>  为了选取出某些值为 NULL 的列的数据，不能使用 =，而只能使用特定的谓词IS NULL。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name, purchase_price</span><br><span class="line"><span class="keyword">FROM</span> product</span><br><span class="line"><span class="keyword">WHERE</span> purchase_price <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+----------------+</span></span><br><span class="line"><span class="operator">|</span> product_name <span class="operator">|</span> purchase_price <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+----------------+</span></span><br><span class="line"><span class="operator">|</span> 叉子         <span class="operator">|</span>           <span class="keyword">NULL</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 圆珠笔       <span class="operator">|</span>           <span class="keyword">NULL</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+----------------+</span></span><br><span class="line"><span class="number">2</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>NOT IN</strong>、<strong>IN</strong>– OR的简便用法</p>
+<p>  IN 谓词（NOT IN 谓词）具有其他谓词所没有的用法，那就是可以使用子查询作为其参数。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name, purchase_price</span><br><span class="line"><span class="keyword">FROM</span> product</span><br><span class="line"><span class="keyword">WHERE</span> purchase_price <span class="keyword">IN</span> (<span class="number">320</span>, <span class="number">500</span>, <span class="number">5000</span>);</span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+----------------+</span></span><br><span class="line"><span class="operator">|</span> product_name <span class="operator">|</span> purchase_price <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+----------------+</span></span><br><span class="line"><span class="operator">|</span> T恤          <span class="operator">|</span>            <span class="number">500</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 打孔器       <span class="operator">|</span>            <span class="number">320</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 高压锅       <span class="operator">|</span>           <span class="number">5000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+----------------+</span></span><br><span class="line"><span class="number">3</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> product_name, sale_price</span><br><span class="line"><span class="keyword">FROM</span> product</span><br><span class="line"><span class="keyword">WHERE</span> product_id <span class="keyword">IN</span> (<span class="keyword">SELECT</span> product_id</span><br><span class="line">  <span class="keyword">FROM</span> shopproduct</span><br><span class="line">                       <span class="keyword">WHERE</span> shop_id <span class="operator">=</span> <span class="string">&#x27;000C&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>  需要注意的是，在使用IN 和 NOT IN 时是无法选取出NULL数据的。</p>
+</li>
+<li><p><strong>EXISTS</strong></p>
+<p>  谓词的作用就是 <strong>“判断是否存在满足某种条件的记录”</strong>。</p>
+<p>  EXIST 只需要在右侧书写 1 个参数，该参数通常都会是一个关联子查询。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--商店编号（shop_id）为 &#x27;000C&#x27;，商品（product）表和商店商品（shopproduct）表中商品编号（product_id）相同</span></span><br><span class="line"><span class="keyword">SELECT</span> product_name, sale_price</span><br><span class="line">  <span class="keyword">FROM</span> product <span class="keyword">AS</span> p</span><br><span class="line"> <span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">                 <span class="keyword">FROM</span> shopproduct <span class="keyword">AS</span> sp</span><br><span class="line">                <span class="keyword">WHERE</span> sp.shop_id <span class="operator">=</span> <span class="string">&#x27;000C&#x27;</span></span><br><span class="line">                  <span class="keyword">AND</span> sp.product_id <span class="operator">=</span> p.product_id);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>CASE表达式</p>
+<ul>
+<li><p>概念</p>
+<p>  CASE 表达式是在区分情况时使用的，这种情况的区分在编程中通常称为（条件）分支</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--语法：</span></span><br><span class="line"><span class="keyword">CASE</span> <span class="keyword">WHEN</span> <span class="operator">&lt;</span>求值表达式<span class="operator">&gt;</span> <span class="keyword">THEN</span> <span class="operator">&lt;</span>表达式<span class="operator">&gt;</span></span><br><span class="line">     <span class="keyword">WHEN</span> <span class="operator">&lt;</span>求值表达式<span class="operator">&gt;</span> <span class="keyword">THEN</span> <span class="operator">&lt;</span>表达式<span class="operator">&gt;</span></span><br><span class="line">     <span class="keyword">WHEN</span> <span class="operator">&lt;</span>求值表达式<span class="operator">&gt;</span> <span class="keyword">THEN</span> <span class="operator">&lt;</span>表达式<span class="operator">&gt;</span></span><br><span class="line">     .</span><br><span class="line">     .</span><br><span class="line">     .</span><br><span class="line"><span class="keyword">ELSE</span> <span class="operator">&lt;</span>表达式<span class="operator">&gt;</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"><span class="comment">--依次判断 when 表达式是否为真值，是则执行 THEN 后的语句，如果所有的 when 表达式均为假，则执行 ELSE 后的语句。</span></span><br><span class="line"><span class="comment">--无论多么庞大的 CASE 表达式，最后也只会返回一个值。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>应用场景：<strong>根据不同分支得到不同列值</strong></p>
+<p>  CASE 表达式最后的“END”是不能省略的</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  product_name,</span><br><span class="line">        <span class="keyword">CASE</span> <span class="keyword">WHEN</span> product_type <span class="operator">=</span> <span class="string">&#x27;衣服&#x27;</span> <span class="keyword">THEN</span> CONCAT(<span class="string">&#x27;A ： &#x27;</span>,product_type)</span><br><span class="line">             <span class="keyword">WHEN</span> product_type <span class="operator">=</span> <span class="string">&#x27;办公用品&#x27;</span>  <span class="keyword">THEN</span> CONCAT(<span class="string">&#x27;B ： &#x27;</span>,product_type)</span><br><span class="line">             <span class="keyword">WHEN</span> product_type <span class="operator">=</span> <span class="string">&#x27;厨房用具&#x27;</span>  <span class="keyword">THEN</span> CONCAT(<span class="string">&#x27;C ： &#x27;</span>,product_type)</span><br><span class="line">             <span class="keyword">ELSE</span> <span class="keyword">NULL</span></span><br><span class="line">        <span class="keyword">END</span> <span class="keyword">AS</span> abc_product_type</span><br><span class="line">  <span class="keyword">FROM</span>  product;</span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+------------------+</span></span><br><span class="line"><span class="operator">|</span> product_name <span class="operator">|</span> abc_product_type <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+------------------+</span></span><br><span class="line"><span class="operator">|</span> T恤          <span class="operator">|</span> A ： 衣服        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 打孔器       <span class="operator">|</span> B ： 办公用品    <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 运动T恤      <span class="operator">|</span> A ： 衣服        <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 菜刀         <span class="operator">|</span> C ： 厨房用具    <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 高压锅       <span class="operator">|</span> C ： 厨房用具    <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 叉子         <span class="operator">|</span> C ： 厨房用具    <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 擦菜板       <span class="operator">|</span> C ： 厨房用具    <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 圆珠笔       <span class="operator">|</span> B ： 办公用品    <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+------------------+</span></span><br><span class="line"><span class="number">8</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>应用场景2：<strong>实现列方向上的聚合</strong></p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_type,</span><br><span class="line">       <span class="built_in">SUM</span>(sale_price) <span class="keyword">AS</span> sum_price</span><br><span class="line">  <span class="keyword">FROM</span> product</span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type;  </span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+-----------+</span></span><br><span class="line"><span class="operator">|</span> product_type <span class="operator">|</span> sum_price <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+-----------+</span></span><br><span class="line"><span class="operator">|</span> 衣服         <span class="operator">|</span>      <span class="number">5000</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 办公用品      <span class="operator">|</span>       <span class="number">600</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 厨房用具      <span class="operator">|</span>     <span class="number">11180</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">--------------+-----------+</span></span><br><span class="line"><span class="number">3</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 对按照商品种类计算出的销售单价合计值进行行列转换</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> product_type <span class="operator">=</span> <span class="string">&#x27;衣服&#x27;</span> <span class="keyword">THEN</span> sale_price <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="keyword">AS</span> sum_price_clothes,</span><br><span class="line">       <span class="built_in">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> product_type <span class="operator">=</span> <span class="string">&#x27;厨房用具&#x27;</span> <span class="keyword">THEN</span> sale_price <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="keyword">AS</span> sum_price_kitchen,</span><br><span class="line">       <span class="built_in">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> product_type <span class="operator">=</span> <span class="string">&#x27;办公用品&#x27;</span> <span class="keyword">THEN</span> sale_price <span class="keyword">ELSE</span> <span class="number">0</span> <span class="keyword">END</span>) <span class="keyword">AS</span> sum_price_office</span><br><span class="line">  <span class="keyword">FROM</span> product;</span><br><span class="line"><span class="operator">+</span><span class="comment">-------------------+-------------------+------------------+</span></span><br><span class="line"><span class="operator">|</span> sum_price_clothes <span class="operator">|</span> sum_price_kitchen <span class="operator">|</span> sum_price_office <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------------+-------------------+------------------+</span></span><br><span class="line"><span class="operator">|</span>              <span class="number">5000</span> <span class="operator">|</span>             <span class="number">11180</span> <span class="operator">|</span>              <span class="number">600</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">-------------------+-------------------+------------------+</span></span><br><span class="line"><span class="number">1</span> <span class="type">row</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>应用场景3：<strong>实现行转列</strong></p>
+<p>  假设有如下图表的结构</p>
+<p>  <img src="https://img-blog.csdnimg.cn/img_convert/487e38a2c364f4c830cb7cdc42fc4500.png" alt="https://img.alicdn.com/imgextra/i1/O1CN01IMBZDB1q7gojkvNse_!!6000000005449-2-tps-219-136.png"></p>
+<p>  计划得到如下的图表结构</p>
+<p>  <img src="https://img-blog.csdnimg.cn/img_convert/30021ddb40cf25eeb9990b5b0a61b580.png" alt="https://img.alicdn.com/imgextra/i4/O1CN01If3OFs1SfXJOk69gs_!!6000000002274-2-tps-291-60.png"></p>
+<p>  聚合函数 + CASE WHEN 表达式即可实现该转换</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- CASE WHEN 实现数字列 score 行转列</span></span><br><span class="line"><span class="keyword">SELECT</span> name,</span><br><span class="line">       <span class="built_in">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> subject <span class="operator">=</span> <span class="string">&#x27;语文&#x27;</span> <span class="keyword">THEN</span> score <span class="keyword">ELSE</span> <span class="keyword">null</span> <span class="keyword">END</span>) <span class="keyword">as</span> chinese,</span><br><span class="line">       <span class="built_in">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> subject <span class="operator">=</span> <span class="string">&#x27;数学&#x27;</span> <span class="keyword">THEN</span> score <span class="keyword">ELSE</span> <span class="keyword">null</span> <span class="keyword">END</span>) <span class="keyword">as</span> math,</span><br><span class="line">       <span class="built_in">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> subject <span class="operator">=</span> <span class="string">&#x27;外语&#x27;</span> <span class="keyword">THEN</span> score <span class="keyword">ELSE</span> <span class="keyword">null</span> <span class="keyword">END</span>) <span class="keyword">as</span> english</span><br><span class="line">  <span class="keyword">FROM</span> score</span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> name;</span><br><span class="line"><span class="operator">+</span><span class="comment">------+---------+------+---------+</span></span><br><span class="line"><span class="operator">|</span> name <span class="operator">|</span> chinese <span class="operator">|</span> math <span class="operator">|</span> english <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------+---------+------+---------+</span></span><br><span class="line"><span class="operator">|</span> 张三 <span class="operator">|</span>      <span class="number">93</span> <span class="operator">|</span>   <span class="number">88</span> <span class="operator">|</span>      <span class="number">91</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> 李四 <span class="operator">|</span>      <span class="number">87</span> <span class="operator">|</span>   <span class="number">90</span> <span class="operator">|</span>      <span class="number">77</span> <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------+---------+------+---------+</span></span><br><span class="line"><span class="number">2</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>练习题</p>
+<ul>
+<li><p><strong>3.1</strong></p>
+<p>  创建出满足下述三个条件的视图（视图名称为 ViewPractice5_1）。使用 product（商品）表作为参照表，假设表中包含初始状态的 8 行数据。</p>
+<ul>
+<li>条件 1：销售单价大于等于 1000 日元。</li>
+<li>条件 2：登记日期是 2009 年 9 月 20 日。</li>
+<li><p>条件 3：包含商品名称、销售单价和登记日期三列。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> ViewPractice5_1 <span class="keyword">AS</span> </span><br><span class="line"><span class="keyword">SELECT</span> product_name,sale_price,regist_date</span><br><span class="line">	<span class="keyword">FROM</span> product</span><br><span class="line">	<span class="keyword">WHERE</span> sale_price<span class="operator">&gt;=</span><span class="number">1000</span> <span class="keyword">and</span> regist_date<span class="operator">=</span><span class="string">&#x27;2009-09-20&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>对该视图执行 SELECT 语句的结果如下所示。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> ViewPractice5_1;</span><br></pre></td></tr></table></figure>
+<p>执行结果</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">product_name <span class="operator">|</span> sale_price <span class="operator">|</span> regist_date</span><br><span class="line"><span class="comment">--------------+------------+------------</span></span><br><span class="line">T恤衫         <span class="operator">|</span> 　 <span class="number">1000</span>    <span class="operator">|</span> <span class="number">2009</span><span class="number">-09</span><span class="number">-20</span></span><br><span class="line">菜刀          <span class="operator">|</span>    <span class="number">3000</span>    <span class="operator">|</span> <span class="number">2009</span><span class="number">-09</span><span class="number">-20</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>3.2</strong></p>
+<p>  向习题一中创建的视图 ViewPractice5_1 中插入如下数据，会得到什么样的结果呢？</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> ViewPractice5_1 <span class="keyword">VALUES</span> (<span class="string">&#x27; 刀子 &#x27;</span>, <span class="number">300</span>, <span class="string">&#x27;2009-11-02&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>  插⼊时将会报错。</p>
+</li>
+<li><p><strong>3.3</strong></p>
+<p>  请根据如下结果编写 SELECT 语句，其中 sale_price_all 列为全部商品的平均销售单价。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_id,product_name,product_type,sale_price,</span><br><span class="line">(<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sale_price) <span class="keyword">FROM</span> product) <span class="keyword">as</span> sale_price_all</span><br><span class="line"><span class="keyword">FROM</span> product;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">product_id <span class="operator">|</span> product_name <span class="operator">|</span> product_type <span class="operator">|</span> sale_price <span class="operator">|</span> sale_price_all</span><br><span class="line"><span class="comment">------------+-------------+--------------+------------+---------------------</span></span><br><span class="line"><span class="number">0001</span>       <span class="operator">|</span> T恤衫         <span class="operator">|</span> 衣服         <span class="operator">|</span> <span class="number">1000</span>       <span class="operator">|</span> <span class="number">2097.5000000000000000</span></span><br><span class="line"><span class="number">0002</span>       <span class="operator">|</span> 打孔器        <span class="operator">|</span> 办公用品      <span class="operator">|</span> <span class="number">500</span>        <span class="operator">|</span> <span class="number">2097.5000000000000000</span></span><br><span class="line"><span class="number">0003</span>       <span class="operator">|</span> 运动T恤       <span class="operator">|</span> 衣服          <span class="operator">|</span> <span class="number">4000</span>      <span class="operator">|</span> <span class="number">2097.5000000000000000</span></span><br><span class="line"><span class="number">0004</span>       <span class="operator">|</span> 菜刀          <span class="operator">|</span> 厨房用具      <span class="operator">|</span> <span class="number">3000</span>       <span class="operator">|</span> <span class="number">2097.5000000000000000</span></span><br><span class="line"><span class="number">0005</span>       <span class="operator">|</span> 高压锅        <span class="operator">|</span> 厨房用具      <span class="operator">|</span> <span class="number">6800</span>       <span class="operator">|</span> <span class="number">2097.5000000000000000</span></span><br><span class="line"><span class="number">0006</span>       <span class="operator">|</span> 叉子          <span class="operator">|</span> 厨房用具      <span class="operator">|</span> <span class="number">500</span>        <span class="operator">|</span> <span class="number">2097.5000000000000000</span></span><br><span class="line"><span class="number">0007</span>       <span class="operator">|</span> 擦菜板        <span class="operator">|</span> 厨房用具       <span class="operator">|</span> <span class="number">880</span>       <span class="operator">|</span> <span class="number">2097.5000000000000000</span></span><br><span class="line"><span class="number">0008</span>       <span class="operator">|</span> 圆珠笔        <span class="operator">|</span> 办公用品       <span class="operator">|</span> <span class="number">100</span>       <span class="operator">|</span> <span class="number">2097.5000000000000000</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>3.4</strong></p>
+<p>  请根据习题一中的条件编写一条 SQL 语句，创建一幅包含如下数据的视图（名称为AvgPriceByType）。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 创建视图的语句</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> AvgPriceByType <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> product_id,</span><br><span class="line"> product_name,</span><br><span class="line"> product_type,</span><br><span class="line"> sale_price,</span><br><span class="line"> (<span class="keyword">SELECT</span> <span class="built_in">AVG</span>(sale_price)</span><br><span class="line"> <span class="keyword">FROM</span> product p2</span><br><span class="line"> <span class="keyword">WHERE</span> p1.product_type <span class="operator">=</span> p2.product_type</span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> p1.product_type) <span class="keyword">AS</span> avg_sale_price</span><br><span class="line"><span class="keyword">FROM</span> product p1;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">product_id <span class="operator">|</span> product_name <span class="operator">|</span> product_type <span class="operator">|</span> sale_price <span class="operator">|</span> avg_sale_price</span><br><span class="line"><span class="comment">------------+-------------+--------------+------------+---------------------</span></span><br><span class="line"><span class="number">0001</span>       <span class="operator">|</span> T恤衫         <span class="operator">|</span> 衣服         <span class="operator">|</span> <span class="number">1000</span>       <span class="operator">|</span><span class="number">2500.0000000000000000</span></span><br><span class="line"><span class="number">0002</span>       <span class="operator">|</span> 打孔器         <span class="operator">|</span> 办公用品     <span class="operator">|</span> <span class="number">500</span>        <span class="operator">|</span> <span class="number">300.0000000000000000</span></span><br><span class="line"><span class="number">0003</span>       <span class="operator">|</span> 运动T恤        <span class="operator">|</span> 衣服        <span class="operator">|</span> <span class="number">4000</span>        <span class="operator">|</span><span class="number">2500.0000000000000000</span></span><br><span class="line"><span class="number">0004</span>       <span class="operator">|</span> 菜刀          <span class="operator">|</span> 厨房用具      <span class="operator">|</span> <span class="number">3000</span>        <span class="operator">|</span><span class="number">2795.0000000000000000</span></span><br><span class="line"><span class="number">0005</span>       <span class="operator">|</span> 高压锅         <span class="operator">|</span> 厨房用具     <span class="operator">|</span> <span class="number">6800</span>        <span class="operator">|</span><span class="number">2795.0000000000000000</span></span><br><span class="line"><span class="number">0006</span>       <span class="operator">|</span> 叉子          <span class="operator">|</span> 厨房用具      <span class="operator">|</span> <span class="number">500</span>         <span class="operator">|</span><span class="number">2795.0000000000000000</span></span><br><span class="line"><span class="number">0007</span>       <span class="operator">|</span> 擦菜板         <span class="operator">|</span> 厨房用具     <span class="operator">|</span> <span class="number">880</span>         <span class="operator">|</span><span class="number">2795.0000000000000000</span></span><br><span class="line"><span class="number">0008</span>       <span class="operator">|</span> 圆珠笔         <span class="operator">|</span> 办公用品     <span class="operator">|</span> <span class="number">100</span>         <span class="operator">|</span> <span class="number">300.0000000000000000</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>3.5</strong></p>
+<p>  运算或者函数中含有 NULL 时，结果全都会变为NULL ？（判断题）</p>
+<p>  正确</p>
+</li>
+<li><p><strong>3.6</strong></p>
+<p>  对本章中使用的 product（商品）表执行如下 2 条 SELECT 语句，能够得到什么样的结果呢？</p>
+<ol>
+<li><p>获取进口价不为500、2800、5000和NULL的数据</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name, purchase_price</span><br><span class="line">  <span class="keyword">FROM</span> product</span><br><span class="line"> <span class="keyword">WHERE</span> purchase_price <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="number">500</span>, <span class="number">2800</span>, <span class="number">5000</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NOT IN的参数不能包含NULL，否则，查询结果为空</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name, purchase_price</span><br><span class="line">  <span class="keyword">FROM</span> product</span><br><span class="line"> <span class="keyword">WHERE</span> purchase_price <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="number">500</span>, <span class="number">2800</span>, <span class="number">5000</span>, <span class="keyword">NULL</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p><strong>3.7</strong></p>
+<p>  按照销售单价（ sale_price）对练习 6.1 中的 product（商品）表中的商品进行如下分类。</p>
+<ul>
+<li>低档商品：销售单价在1000日元以下（T恤衫、办公用品、叉子、擦菜板、 圆珠笔）</li>
+<li>中档商品：销售单价在1001日元以上3000日元以下（菜刀）</li>
+<li><p>高档商品：销售单价在3001日元以上（运动T恤、高压锅）</p>
+<p>请编写出统计上述商品种类中所包含的商品数量的 SELECT 语句，结果如下所示。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line"><span class="built_in">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sale_price<span class="operator">&lt;</span><span class="number">1000</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="keyword">NULL</span> <span class="keyword">END</span>) <span class="keyword">as</span> low_price,</span><br><span class="line"><span class="built_in">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sale_price<span class="operator">&gt;</span><span class="number">1001</span> <span class="keyword">and</span> sale_price<span class="operator">&lt;</span><span class="number">3000</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="keyword">NULL</span> <span class="keyword">END</span>) <span class="keyword">as</span> mid_price,</span><br><span class="line"><span class="built_in">SUM</span>(<span class="keyword">CASE</span> <span class="keyword">WHEN</span> sale_price<span class="operator">&gt;</span><span class="number">3001</span> <span class="keyword">THEN</span> <span class="number">1</span> <span class="keyword">ELSE</span> <span class="keyword">NULL</span> <span class="keyword">END</span>) <span class="keyword">as</span> high_price</span><br><span class="line"><span class="keyword">FROM</span> product;</span><br></pre></td></tr></table></figure>
+<p>执行结果</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">low_price <span class="operator">|</span> mid_price <span class="operator">|</span> high_price</span><br><span class="line"><span class="comment">----------+-----------+------------</span></span><br><span class="line">        <span class="number">5</span> <span class="operator">|</span>         <span class="number">1</span> <span class="operator">|</span>         <span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://zhushen12580.top">修</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://zhushen12580.top/2021/12/23/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%20Task3_%E8%A7%86%E5%9B%BE%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%81%E5%87%BD%E6%95%B0%E7%AD%89/">https://zhushen12580.top/2021/12/23/阿里云AI训练营SQL入门到实践 Task3_视图、子查询、函数等/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SQL%E5%9F%BA%E7%A1%80/">SQL基础</a><a class="post-meta__tags" href="/tags/%E8%AE%AD%E7%BB%83%E8%90%A5/">训练营</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/23/%E9%98%BF%E9%87%8CAI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5task1/"><img class="prev-cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" onerror="onerror=null;src='https://s2.loli.net/2023/01/10/l5NZnqjCD6bV3rf.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">阿里AI训练营SQL入门与实践task1</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/23/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%20Task02%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2%E4%B8%8E%E6%8E%92%E5%BA%8F/"><img class="next-cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" onerror="onerror=null;src='https://s2.loli.net/2023/01/10/l5NZnqjCD6bV3rf.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">阿里AI训练营SQL入门与实践task2</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/12/25/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5Task4/" title="阿里AI训练营SQL入门与实践task4"><img class="cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-25</div><div class="title">阿里AI训练营SQL入门与实践task4</div></div></a></div><div><a href="/2021/12/23/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%20Task02%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2%E4%B8%8E%E6%8E%92%E5%BA%8F/" title="阿里AI训练营SQL入门与实践task2"><img class="cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-23</div><div class="title">阿里AI训练营SQL入门与实践task2</div></div></a></div><div><a href="/2021/12/26/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5Task5/" title="阿里AI训练营SQL入门与实践task5"><img class="cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-26</div><div class="title">阿里AI训练营SQL入门与实践task5</div></div></a></div><div><a href="/2021/12/23/%E9%98%BF%E9%87%8CAI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5task1/" title="阿里AI训练营SQL入门与实践task1"><img class="cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-23</div><div class="title">阿里AI训练营SQL入门与实践task1</div></div></a></div><div><a href="/2020/03/24/%E6%A0%B9%E6%8D%AE%E4%B8%8D%E5%90%8C%E4%B8%AA%E6%97%B6%E9%97%B4%E5%8C%BA%E9%97%B4%E6%89%B9%E9%87%8F%E5%AF%B9%E5%85%B6%E4%BB%96%E5%AD%97%E6%AE%B5%E8%B5%8B%E5%80%BC/" title="mysql常用代码段"><img class="cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-24</div><div class="title">mysql常用代码段</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2023/01/10/ZdfSPRT3r2LUOwy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">修</div><div class="author-info__description">格物致知，知行合一</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.heywhale.com/home/user/profile/60d312e743169f0017875764/overview"><i></i><span>🚗前往小家...</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:zhusheng12580@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/zhushen12580" target="_blank" title="github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/486158714" target="_blank" title="B站"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="https://s2.loli.net/2023/01/10/rN753bPopxzLSRV.jpg" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://res.abeim.cn/api/qq/?qq=2270364052" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="sticky_layout"></div></div></main><footer id="footer" style="background: var(#baccd9)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 修</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://my-twikoo-henna-ten.vercel.app',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://my-twikoo-henna-ten.vercel.app',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script> <script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script> <script defer data-pjax src="/js/cat.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/教程/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 修の学习教程 (23)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/项目/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🎮 修の项目库 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/生活/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🐱 修の生活记录 (3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/文摘/美学/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 修の美学研修 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/文摘/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 修の读书笔记 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/随想/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 修の胡思乱想 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="https://zhushen12580.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #89a0e2}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = '49c17355b5f0452997138f450012ff04';
+  var gaud_map_key = 'aba58fd318b4d04b9d0e07fe6061f38e';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/01/20/茶小白入门攻略/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-01-20</span><a class="blog-slider__title" href="2023/01/20/茶小白入门攻略/" alt="">茶小白入门全攻略</a><div class="blog-slider__text">这里是个茶入门指南.....</div><a class="blog-slider__button" href="2023/01/20/茶小白入门攻略/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/04/14/课堂笔记【java JDBC】/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-04-14</span><a class="blog-slider__title" href="2020/04/14/课堂笔记【java JDBC】/" alt="">java JDBC详解</a><div class="blog-slider__text">java jdbc详解~</div><a class="blog-slider__button" href="2020/04/14/课堂笔记【java JDBC】/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/05/12/记录一次搭建【域】环境实验，有图有真相/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-05-12</span><a class="blog-slider__title" href="2020/05/12/记录一次搭建【域】环境实验，有图有真相/" alt="">记录搭建域环境实验</a><div class="blog-slider__text">搭建域环境实验~</div><a class="blog-slider__button" href="2020/05/12/记录一次搭建【域】环境实验，有图有真相/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/04/07/再见！【JAVA GUI】/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-04-07</span><a class="blog-slider__title" href="2020/04/07/再见！【JAVA GUI】/" alt="">详解java GUI</a><div class="blog-slider__text">介绍了java gui组件使用~</div><a class="blog-slider__button" href="2020/04/07/再见！【JAVA GUI】/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/04/17/小白也能看懂的mySQL进阶【单表查询】/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-04-17</span><a class="blog-slider__title" href="2020/04/17/小白也能看懂的mySQL进阶【单表查询】/" alt="">mysql进阶之单表查询</a><div class="blog-slider__text">详解mysql单表查询~</div><a class="blog-slider__button" href="2020/04/17/小白也能看懂的mySQL进阶【单表查询】/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/05/15/学习PKI技术【理论+实战】/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-05-15</span><a class="blog-slider__title" href="2020/05/15/学习PKI技术【理论+实战】/" alt="">PKI技术【理论+实战】</a><div class="blog-slider__text">详解PKI技术及实践~</div><a class="blog-slider__button" href="2020/05/15/学习PKI技术【理论+实战】/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/04/10/《新摄影笔记》/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-04-10</span><a class="blog-slider__title" href="2021/04/10/《新摄影笔记》/" alt="">《新摄影笔记》</a><div class="blog-slider__text">关于一本摄影新手入门书籍的笔记。</div><a class="blog-slider__button" href="2021/04/10/《新摄影笔记》/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/04/07/Hadoop完全分布式模式安装部署/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-04-07</span><a class="blog-slider__title" href="2020/04/07/Hadoop完全分布式模式安装部署/" alt="">Hadoop完全分布式模式安装部署</a><div class="blog-slider__text">hadoop环境搭建指南~</div><a class="blog-slider__button" href="2020/04/07/Hadoop完全分布式模式安装部署/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/08/26/第一周笔记_概述/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-08-26</span><a class="blog-slider__title" href="2021/08/26/第一周笔记_概述/" alt="">《网络爬虫-概述》</a><div class="blog-slider__text">简单介绍数据来源、AI时代三要素、爬虫应用场景、爬虫合法性探究、环境搭建、我的第一个爬虫程序等。</div><a class="blog-slider__button" href="2021/08/26/第一周笔记_概述/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

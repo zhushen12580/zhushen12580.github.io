@@ -1,0 +1,424 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>阿里AI训练营SQL入门与实践task2 | 修の小破站</title><meta name="author" content="修"><meta name="copyright" content="修"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="表分组、表查询">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿里AI训练营SQL入门与实践task2">
+<meta property="og:url" content="https://zhushen12580.top/2021/12/23/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%20Task02%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2%E4%B8%8E%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:site_name" content="修の小破站">
+<meta property="og:description" content="表分组、表查询">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg">
+<meta property="article:published_time" content="2021-12-23T07:05:40.000Z">
+<meta property="article:modified_time" content="2023-02-11T02:06:40.001Z">
+<meta property="article:author" content="修">
+<meta property="article:tag" content="SQL基础">
+<meta property="article:tag" content="训练营">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg"><link rel="shortcut icon" href="https://s2.loli.net/2023/01/10/rguK1npdW9s7z6a.png"><link rel="canonical" href="https://zhushen12580.top/2021/12/23/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%20Task02%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2%E4%B8%8E%E6%8E%92%E5%BA%8F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":730,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"Author: 修","link":"Link: ","source":"Source: 修の小破站","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source."}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '阿里AI训练营SQL入门与实践task2',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-02-11 10:06:40'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"> <link rel="stylesheet" href="/css/progress_bar.css" media="defer" onload="this.media='all'"> <link rel="stylesheet" href="/css/cat.css"> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&display=swap" rel="stylesheet"><div id="myscoll"></div><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js/themes/blue/pace-theme-minimal.min.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2023/01/10/ZdfSPRT3r2LUOwy.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-archive"></i><span> 归档</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/talk/"><i class="fa-fw fas fa-music"></i><span> 说说</span></a></li><li><a class="site-page child" href="/CUSTOM/%E7%94%B5%E5%BD%B1%E5%89%A7%E7%85%A7.html"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-message"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 外链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">修の小破站</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-archive"></i><span> 归档</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/talk/"><i class="fa-fw fas fa-music"></i><span> 说说</span></a></li><li><a class="site-page child" href="/CUSTOM/%E7%94%B5%E5%BD%B1%E5%89%A7%E7%85%A7.html"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-message"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 外链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">阿里AI训练营SQL入门与实践task2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-12-23T07:05:40.000Z" title="Created 2021-12-23 15:05:40">2021-12-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-02-11T02:06:40.001Z" title="Updated 2023-02-11 10:06:40">2023-02-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">2.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>9min</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="阿里AI训练营SQL入门与实践task2"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><ul>
+<li><p>select语句基础</p>
+<ul>
+<li><p>where语句</p>
+<p>  SELECT 语句通过WHERE子句来指定查询数据的条件。</p>
+<p>  在WHERE 子句中可以指定“某一列的值和这个字符串相等”或者“某一列的值大于这个数字”等条件。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--语法：</span></span><br><span class="line"><span class="comment">--SELECT &lt;列名&gt;, ……</span></span><br><span class="line">  <span class="comment">--FROM &lt;表名&gt;</span></span><br><span class="line"> <span class="comment">--WHERE &lt;条件表达式&gt;;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 用来选取product type列为衣服’的记录的SELECT语句</span></span><br><span class="line"><span class="keyword">SELECT</span> product_name, product_type</span><br><span class="line">  <span class="keyword">FROM</span> product</span><br><span class="line"> <span class="keyword">WHERE</span> product_type <span class="operator">=</span> <span class="string">&#x27;衣服&#x27;</span>;</span><br><span class="line"><span class="comment">-- 也可以选取出不是查询条件的列（条件列与输出列不同）</span></span><br><span class="line"><span class="keyword">SELECT</span> product_name</span><br><span class="line">  <span class="keyword">FROM</span> product</span><br><span class="line"> <span class="keyword">WHERE</span> product_type <span class="operator">=</span> <span class="string">&#x27;衣服&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相关法则</p>
+<ul>
+<li>星号（*）代表全部列的意思。</li>
+<li>SQL中可以随意使用换行符，不影响语句执行（但不可插入空行）。</li>
+<li>设定汉语别名时需要使用双引号（”）括起来。</li>
+<li>在SELECT语句中使用DISTINCT可以删除重复行。</li>
+<li>注释是SQL语句中用来标识说明或者注意事项的部分。分为1行注释”— “和多行注释两种”/<em> </em>/“。</li>
+<li><p>xx可以用占位符、_：代表确定的一个字符、%：代表是任意个数的字符，0~n个</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 想要查询出全部列时，可以使用代表所有列的星号（*）。</span></span><br><span class="line">		<span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">		  <span class="keyword">FROM</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span>;</span><br><span class="line"><span class="comment">-- SQL语句可以使用AS关键字为列设定别名（用中文时需要双引号（“”））。</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_id     <span class="keyword">AS</span> id,</span><br><span class="line">		       product_name   <span class="keyword">AS</span> name,</span><br><span class="line">		       purchase_price <span class="keyword">AS</span> &quot;进货单价&quot;</span><br><span class="line">		  <span class="keyword">FROM</span> product;</span><br><span class="line"><span class="comment">-- 使用DISTINCT删除product_type列中重复的数据</span></span><br><span class="line">		<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> product_type</span><br><span class="line">		  <span class="keyword">FROM</span> product;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>算术运算符&amp;比较运算符</p>
+<ul>
+<li>算术运算符：+、-、*、/</li>
+<li>比较运算符：=、&lt;&gt;、≥、&gt;、≤、&lt;</li>
+<li><p>常用法则：</p>
+<ul>
+<li>SELECT子句中可以使用常数或者表达式。</li>
+<li>字符串类型的数据原则上按照字典顺序进行排序，不能与数字的大小顺序混淆。</li>
+<li><p>希望选取NULL记录时，需要在条件表达式中使用IS NULL运算符。希望选取不是NULL的记录时，需要在条件表达式中使用IS NOT NULL运算符。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- SQL语句中也可以使用运算表达式</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_name, sale_price, sale_price <span class="operator">*</span> <span class="number">2</span> <span class="keyword">AS</span> &quot;sale_price x2&quot;</span><br><span class="line">		  <span class="keyword">FROM</span> product;</span><br><span class="line"><span class="comment">-- WHERE子句的条件表达式中也可以使用计算表达式</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_name, sale_price, purchase_price</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">WHERE</span> sale_price<span class="operator">-</span>purchase_price <span class="operator">&gt;=</span> <span class="number">500</span>;</span><br><span class="line"><span class="comment">/* 对字符串使用不等号</span></span><br><span class="line"><span class="comment">首先创建chars并插入数据</span></span><br><span class="line"><span class="comment">选取出大于‘2’的SELECT语句*/</span></span><br><span class="line"><span class="comment">-- DDL：创建表</span></span><br><span class="line">		<span class="keyword">CREATE</span> <span class="keyword">TABLE</span> chars</span><br><span class="line">		（chr <span class="type">CHAR</span>（<span class="number">3</span>）<span class="keyword">NOT</span> <span class="keyword">NULL</span>，</span><br><span class="line">		<span class="keyword">PRIMARY</span> KEY（chr））;</span><br><span class="line"><span class="comment">-- 选取出大于&#x27;2&#x27;的数据的SELECT语句(&#x27;2&#x27;为字符串)</span></span><br><span class="line">		<span class="keyword">SELECT</span> chr</span><br><span class="line">		  <span class="keyword">FROM</span> chars</span><br><span class="line">		 <span class="keyword">WHERE</span> chr <span class="operator">&gt;</span> <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line"><span class="comment">-- 选取NULL的记录</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_name，purchase_price</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">WHERE</span> purchase_price <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br><span class="line"><span class="comment">-- 选取不为NULL的记录</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_name，purchase_price</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">WHERE</span> purchase_price <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>逻辑运算符</p>
+<ul>
+<li><p>NOT</p>
+<p>  NOT不能单独使用，如下例：</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 选取出销售单价大于等于1000日元的记录</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_name, product_type, sale_price</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">WHERE</span> sale_price <span class="operator">&gt;=</span> <span class="number">1000</span>;</span><br><span class="line"> <span class="comment">-- 向代码清单2-30的查询条件中添加NOT运算符</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_name, product_type, sale_price</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">WHERE</span> <span class="keyword">NOT</span> sale_price <span class="operator">&gt;=</span> <span class="number">1000</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>AND和OR</p>
+<p>  当希望同时使用多个查询条件时，可以使用AND或者OR运算符。</p>
+<p>  AND运算符工作效果图:</p>
+<p>  [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-cNc1wp0H-1639969624554)(<a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b020760a-4fe1-43b7-8ec0-6efd751b3093/Untitled.png">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b020760a-4fe1-43b7-8ec0-6efd751b3093/Untitled.png</a>)]</p>
+<p>  OR运算符工作效果图:</p>
+<p>  [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-CEq81wvx-1639969624557)(<a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e1f7ef2d-c358-40e0-b9de-bfebf46c96a6/Untitled.png">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e1f7ef2d-c358-40e0-b9de-bfebf46c96a6/Untitled.png</a>)]</p>
+</li>
+<li><p>逻辑运算符优先级：</p>
+<p>  AND 运算符优先于 OR 运算符</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 通过使用括号让OR运算符先于AND运算符执行</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_name, product_type, regist_date</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">WHERE</span> product_type <span class="operator">=</span> <span class="string">&#x27;办公用品&#x27;</span></span><br><span class="line">		   <span class="keyword">AND</span> ( regist_date <span class="operator">=</span> <span class="string">&#x27;2009-09-11&#x27;</span></span><br><span class="line">		        <span class="keyword">OR</span> regist_date <span class="operator">=</span> <span class="string">&#x27;2009-09-20&#x27;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>真值表</p>
+<ul>
+<li>AND 运算符：两侧的真值都为真时返回真，除此之外都返回假。</li>
+<li>OR 运算符：两侧的真值只要有一个不为假就返回真，只有当其两侧的真值都为假时才返回假。</li>
+<li>NOT运算符：只是单纯的将真转换为假，将假转换为真。</li>
+<li>NULL的真值结果既不为真，也不为假，因为并不知道这样一个值。这时真值是除真假之外的第三种值——<strong>不确定</strong>（UNKNOWN）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>练习题</p>
+<ul>
+<li><p>1.编写一条SQL语句，从product（商品）表中选取出“登记日期（regist在2009年4月28日之后”的商品，查询结果要包含product_name和regist_date两列。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name,regist_date <span class="keyword">FROM</span> product <span class="keyword">WHERE</span>  regist_date <span class="operator">&gt;</span> &quot;2009-4-28&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2.请说出对product 表执行如下3条SELECT语句时的返回结果。</p>
+<ul>
+<li><p>查询出销售价格为空的记录</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">FROM</span> product</span><br><span class="line"> <span class="keyword">WHERE</span> purchase_price <span class="operator">=</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询出销售价格不为空的记录</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">FROM</span> product</span><br><span class="line"> <span class="keyword">WHERE</span> purchase_price <span class="operator">&lt;&gt;</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>返回都为空</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">FROM</span> product</span><br><span class="line"> <span class="keyword">WHERE</span> product_name <span class="operator">&gt;</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>3.代码清单2-22（2-2节）中的SELECT语句能够从product表中取出“销售单价（saleprice）比进货单价（purchase price）高出500日元以上”的商品。请写出两条可以得到相同结果的SELECT语句。执行结果如下所示。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> product <span class="keyword">WHERE</span> (sale_price<span class="number">-500</span>)<span class="operator">&gt;=</span>purchase_price;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> product <span class="keyword">WHERE</span> (sale_price<span class="operator">-</span>purchase_price)<span class="operator">&gt;=</span><span class="number">500</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.请写出一条SELECT语句，从product表中选取出满足“销售单价打九折之后利润高于100日元的办公用品和厨房用具”条件的记录。查询结果要包括product_name列、product_type列以及销售单价打九折之后的利润（别名设定为profit）。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name,product_type,profit</span><br><span class="line"><span class="keyword">FROM</span> product</span><br><span class="line"><span class="keyword">WHERE</span> ((sale_price<span class="operator">*</span><span class="number">0.9</span> <span class="keyword">AS</span> profit<span class="operator">-</span>purchase_price)<span class="operator">&gt;</span><span class="number">100</span>) <span class="keyword">AND</span> (product_type<span class="operator">=</span>&quot;办公用品&quot; <span class="keyword">OR</span> product_type<span class="operator">=</span>&quot;厨房用具&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>表的聚合查询</p>
+<ul>
+<li>五种常用的聚合函数<ul>
+<li>COUNT：计算表中的记录数（行数）</li>
+<li>SUM：计算表中数值列中数据的合计值</li>
+<li>AVG：计算表中数值列中数据的平均值</li>
+<li>MAX：求出表中任意列中数据的最大值</li>
+<li>MIN：求出表中任意列中数据的最小值</li>
+</ul>
+</li>
+<li>常用法则<ul>
+<li>COUNT函数的结果根据参数的不同而不同。COUNT(*)会得到包含NULL的数据行数，而COUNT(&lt;列名&gt;)会得到NULL之外的数据行数。</li>
+<li>MAX/MIN函数几乎适用于所有数据类型的列。SUM/AVG函数只适用于数值类型的列。</li>
+<li>在聚合函数的参数中使用DISTINCT，可以删除重复数据。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>表的分组查询</p>
+<ul>
+<li><p>GROUP BY语句</p>
+<p>  对数据进行分组汇总。在 GROUP BY 子句中指定的列称为<strong>聚合键</strong>或者<strong>分组列</strong>。</p>
+<p>  [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-FP6OttII-1639969624559)(<a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/79918fbd-1c80-4919-ac1b-2f2150edf646/Untitled.png">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/79918fbd-1c80-4919-ac1b-2f2150edf646/Untitled.png</a>)]</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 按照商品种类统计数据行数</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_type, <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type;</span><br><span class="line"><span class="comment">--按照衣服的进口价格进行分组统计</span></span><br><span class="line"> <span class="keyword">SELECT</span> purchase_price, <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line">  <span class="keyword">FROM</span> product</span><br><span class="line"> <span class="keyword">WHERE</span> product_type <span class="operator">=</span> <span class="string">&#x27;衣服&#x27;</span></span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> purchase_price;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注意事项</p>
+<ul>
+<li>聚合键包含BULL时，会将NULL作为一组特殊数据进行处理。</li>
+<li>在聚合函数的SELECT子句中写了聚合健以外的列 使用COUNT等聚合函数时，SELECT子句中如果出现列名，只能是GROUP BY子句中指定的列名（也就是聚合键）。</li>
+<li>在WHERE中使用聚合函数 原因是聚合函数的使用前提是结果集已经确定，而WHERE还处于确定结果集的过程中，所以相互矛盾会引发错误。 如果想指定条件，可以在SELECT，HAVING（下面马上会讲）以及ORDER BY子句中使用聚合函数。</li>
+<li>在GROUP BY子句中使用列的别名 SELECT子句中可以通过AS来指定别名，但在GROUP BY中不能使用别名。因为在DBMS中 ,SELECT子句在GROUP BY子句后执行。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>聚合结果指定条件</p>
+<ul>
+<li><p>HAVING语句</p>
+<p>  对分组后的数据进行处理</p>
+<p>  [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-LPSW1A6z-1639969624561)(<a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0889c861-81ee-4984-b5c8-414a4196d3f6/Untitled.png">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/0889c861-81ee-4984-b5c8-414a4196d3f6/Untitled.png</a>)]</p>
+<p>  这里WHERE不可行，因为，WHERE子句只能指定记录（行）的条件，而不能用来指定组的条件（例如，“数据行数为 2 行”或者“平均值为 500”等）。</p>
+</li>
+<li><p>HAVING特点</p>
+<p>  HAVING子句用于对分组进行过滤，可以使用数字、聚合函数和GROUP BY中指定的列名（聚合键）。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 数字</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_type, <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type</span><br><span class="line">		<span class="keyword">HAVING</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="comment">-- 错误形式（因为product_name不包含在GROUP BY聚合键中）</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_type, <span class="built_in">COUNT</span>(<span class="operator">*</span>)</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type</span><br><span class="line">		<span class="keyword">HAVING</span> product_name <span class="operator">=</span> <span class="string">&#x27;圆珠笔&#x27;</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>对查询结果进行排序与限制查看</p>
+<ul>
+<li><p>ORDER BY语句</p>
+<p>  默认为升序排列，降序排列为DESC</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 降序排列</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_id, product_name, sale_price, purchase_price</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">ORDER</span> <span class="keyword">BY</span> sale_price <span class="keyword">DESC</span>;</span><br><span class="line"><span class="comment">-- 多个排序键</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_id, product_name, sale_price, purchase_price</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">ORDER</span> <span class="keyword">BY</span> sale_price, product_id;</span><br><span class="line"><span class="comment">-- 当用于排序的列名中含有NULL时，NULL会在开头或末尾进行汇总。</span></span><br><span class="line">		<span class="keyword">SELECT</span> product_id, product_name, sale_price, purchase_price</span><br><span class="line">		  <span class="keyword">FROM</span> product</span><br><span class="line">		 <span class="keyword">ORDER</span> <span class="keyword">BY</span> purchase_price;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>LIMIT 语句</p>
+<p>  limit语句可对查询的数据进行取前几个查看。</p>
+<p>  limit n 等同于 limit 0,n  索引从0到n</p>
+<p>  limit m,n 等同于 索引从m到m+n</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 查询<span class="number">8</span>条数据，索引从<span class="number">5</span>到<span class="number">12</span>，第<span class="number">6</span>条记录到第<span class="number">13</span>条记录</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t_user limit <span class="number">5</span>,<span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>练习题</p>
+<ul>
+<li><p>5.请指出下述SELECT语句中所有的语法错误。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_id, SUM（product_name）</span><br><span class="line"><span class="comment">--本SELECT语句中存在错误。</span></span><br><span class="line">  <span class="keyword">FROM</span> product </span><br><span class="line"> <span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type </span><br><span class="line"> <span class="keyword">WHERE</span> regist_date <span class="operator">&gt;</span> <span class="string">&#x27;2009-09-01&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>  1.聚合函数不可以用除聚合键以外的列；2.不可用WHERE对分组结果进行过滤；3.product_name为字符串类型，sum()函数不可用</p>
+<p>  4.SELECT子句没有包含GROUP BY 列</p>
+</li>
+<li><p>6.请编写一条SELECT语句，求出销售单价（sale_price列）合计值大于进货单价（purchase_price列）合计值1.5倍的商品种类。执行结果如下所示。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_type,<span class="built_in">SUM</span>(sale_price)<span class="keyword">as</span> <span class="string">&#x27;sum&#x27;</span>,<span class="built_in">SUM</span>(purchase_price) <span class="keyword">as</span> <span class="string">&#x27;sum&#x27;</span> </span><br><span class="line"><span class="keyword">FROM</span> product </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> product_type</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">SUM</span>(sale_price)<span class="operator">&gt;</span><span class="number">1.5</span><span class="operator">*</span><span class="built_in">SUM</span>(purchase_price);</span><br><span class="line"></span><br><span class="line">product_type <span class="operator">|</span> sum  <span class="operator">|</span> sum </span><br><span class="line"><span class="comment">-------------+------+------</span></span><br><span class="line">衣服         <span class="operator">|</span> <span class="number">5000</span> <span class="operator">|</span> <span class="number">3300</span></span><br><span class="line">办公用品      <span class="operator">|</span>  <span class="number">600</span> <span class="operator">|</span> <span class="number">320</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>7.此前我们曾经使用SELECT语句选取出了product（商品）表中的全部记录。当时我们使用了ORDERBY子句来指定排列顺序，但现在已经无法记起当时如何指定的了。请根据下列执行结果，思考ORDERBY子句的内容。</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> product</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> regist_date <span class="keyword">desc</span>, sale_price;</span><br></pre></td></tr></table></figure>
+<p>  [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-eQJZxQgH-1639969624563)(<a target="_blank" rel="noopener" href="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aee85fce-bc22-45aa-b44e-a9f4e0dff957/Untitled.png">https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aee85fce-bc22-45aa-b44e-a9f4e0dff957/Untitled.png</a>)]</p>
+</li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://zhushen12580.top">修</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://zhushen12580.top/2021/12/23/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%20Task02%EF%BC%9ASQL%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2%E4%B8%8E%E6%8E%92%E5%BA%8F/">https://zhushen12580.top/2021/12/23/阿里云AI训练营SQL入门到实践 Task02：SQL基础查询与排序/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SQL%E5%9F%BA%E7%A1%80/">SQL基础</a><a class="post-meta__tags" href="/tags/%E8%AE%AD%E7%BB%83%E8%90%A5/">训练营</a></div><div class="post_share"><div class="social-share" data-image="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/23/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%20Task3_%E8%A7%86%E5%9B%BE%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%81%E5%87%BD%E6%95%B0%E7%AD%89/"><img class="prev-cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" onerror="onerror=null;src='https://s2.loli.net/2023/01/10/l5NZnqjCD6bV3rf.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">阿里AI训练营SQL入门与实践task3</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/25/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5Task4/"><img class="next-cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" onerror="onerror=null;src='https://s2.loli.net/2023/01/10/l5NZnqjCD6bV3rf.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">阿里AI训练营SQL入门与实践task4</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2021/12/25/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5Task4/" title="阿里AI训练营SQL入门与实践task4"><img class="cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-25</div><div class="title">阿里AI训练营SQL入门与实践task4</div></div></a></div><div><a href="/2021/12/23/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E8%B7%B5%20Task3_%E8%A7%86%E5%9B%BE%E3%80%81%E5%AD%90%E6%9F%A5%E8%AF%A2%E3%80%81%E5%87%BD%E6%95%B0%E7%AD%89/" title="阿里AI训练营SQL入门与实践task3"><img class="cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-23</div><div class="title">阿里AI训练营SQL入门与实践task3</div></div></a></div><div><a href="/2021/12/26/%E9%98%BF%E9%87%8C%E4%BA%91AI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5Task5/" title="阿里AI训练营SQL入门与实践task5"><img class="cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-26</div><div class="title">阿里AI训练营SQL入门与实践task5</div></div></a></div><div><a href="/2021/12/23/%E9%98%BF%E9%87%8CAI%E8%AE%AD%E7%BB%83%E8%90%A5SQL%E5%85%A5%E9%97%A8%E4%B8%8E%E5%AE%9E%E8%B7%B5task1/" title="阿里AI训练营SQL入门与实践task1"><img class="cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-12-23</div><div class="title">阿里AI训练营SQL入门与实践task1</div></div></a></div><div><a href="/2020/03/24/%E6%A0%B9%E6%8D%AE%E4%B8%8D%E5%90%8C%E4%B8%AA%E6%97%B6%E9%97%B4%E5%8C%BA%E9%97%B4%E6%89%B9%E9%87%8F%E5%AF%B9%E5%85%B6%E4%BB%96%E5%AD%97%E6%AE%B5%E8%B5%8B%E5%80%BC/" title="mysql常用代码段"><img class="cover" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-03-24</div><div class="title">mysql常用代码段</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comment</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s2.loli.net/2023/01/10/ZdfSPRT3r2LUOwy.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">修</div><div class="author-info__description">格物致知，知行合一</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">32</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://www.heywhale.com/home/user/profile/60d312e743169f0017875764/overview"><i></i><span>🚗前往小家...</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:zhusheng12580@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/zhushen12580" target="_blank" title="github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://space.bilibili.com/486158714" target="_blank" title="B站"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="https://s2.loli.net/2023/01/10/rN753bPopxzLSRV.jpg" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="https://res.abeim.cn/api/qq/?qq=2270364052" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="sticky_layout"></div></div></main><footer id="footer" style="background: var(#baccd9)"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 修</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading the Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://my-twikoo-henna-ten.vercel.app',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://my-twikoo-henna-ten.vercel.app',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async src="//npm.elemecdn.com/pace-js@1.2.4/pace.min.js"></script> <script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script> <script defer data-pjax src="/js/cat.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/教程/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 修の学习教程 (23)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/项目/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🎮 修の项目库 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/生活/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">🐱 修の生活记录 (3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/文摘/美学/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">👩‍💻 修の美学研修 (1)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/文摘/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📒 修の读书笔记 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="https://zhushen12580.top/categories/随想/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 修の胡思乱想 (2)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="https://zhushen12580.top/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #89a0e2}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = '/';
+  var qweather_key = '49c17355b5f0452997138f450012ff04';
+  var gaud_map_key = 'aba58fd318b4d04b9d0e07fe6061f38e';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '113.34532,23.15624';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2023/01/20/茶小白入门攻略/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2023-01-20</span><a class="blog-slider__title" href="2023/01/20/茶小白入门攻略/" alt="">茶小白入门全攻略</a><div class="blog-slider__text">这里是个茶入门指南.....</div><a class="blog-slider__button" href="2023/01/20/茶小白入门攻略/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/04/14/课堂笔记【java JDBC】/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-04-14</span><a class="blog-slider__title" href="2020/04/14/课堂笔记【java JDBC】/" alt="">java JDBC详解</a><div class="blog-slider__text">java jdbc详解~</div><a class="blog-slider__button" href="2020/04/14/课堂笔记【java JDBC】/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/05/12/记录一次搭建【域】环境实验，有图有真相/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-05-12</span><a class="blog-slider__title" href="2020/05/12/记录一次搭建【域】环境实验，有图有真相/" alt="">记录搭建域环境实验</a><div class="blog-slider__text">搭建域环境实验~</div><a class="blog-slider__button" href="2020/05/12/记录一次搭建【域】环境实验，有图有真相/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/04/07/再见！【JAVA GUI】/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-04-07</span><a class="blog-slider__title" href="2020/04/07/再见！【JAVA GUI】/" alt="">详解java GUI</a><div class="blog-slider__text">介绍了java gui组件使用~</div><a class="blog-slider__button" href="2020/04/07/再见！【JAVA GUI】/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/04/17/小白也能看懂的mySQL进阶【单表查询】/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-04-17</span><a class="blog-slider__title" href="2020/04/17/小白也能看懂的mySQL进阶【单表查询】/" alt="">mysql进阶之单表查询</a><div class="blog-slider__text">详解mysql单表查询~</div><a class="blog-slider__button" href="2020/04/17/小白也能看懂的mySQL进阶【单表查询】/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/05/15/学习PKI技术【理论+实战】/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-05-15</span><a class="blog-slider__title" href="2020/05/15/学习PKI技术【理论+实战】/" alt="">PKI技术【理论+实战】</a><div class="blog-slider__text">详解PKI技术及实践~</div><a class="blog-slider__button" href="2020/05/15/学习PKI技术【理论+实战】/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/04/10/《新摄影笔记》/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-04-10</span><a class="blog-slider__title" href="2021/04/10/《新摄影笔记》/" alt="">《新摄影笔记》</a><div class="blog-slider__text">关于一本摄影新手入门书籍的笔记。</div><a class="blog-slider__button" href="2021/04/10/《新摄影笔记》/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2020/04/07/Hadoop完全分布式模式安装部署/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2020-04-07</span><a class="blog-slider__title" href="2020/04/07/Hadoop完全分布式模式安装部署/" alt="">Hadoop完全分布式模式安装部署</a><div class="blog-slider__text">hadoop环境搭建指南~</div><a class="blog-slider__button" href="2020/04/07/Hadoop完全分布式模式安装部署/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="2021/08/26/第一周笔记_概述/" alt=""><img width="48" height="48" src="https://s1.ax1x.com/2023/02/02/pSrf9X9.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2021-08-26</span><a class="blog-slider__title" href="2021/08/26/第一周笔记_概述/" alt="">《网络爬虫-概述》</a><div class="blog-slider__text">简单介绍数据来源、AI时代三要素、爬虫应用场景、爬虫合法性探究、环境搭建、我的第一个爬虫程序等。</div><a class="blog-slider__button" href="2021/08/26/第一周笔记_概述/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
