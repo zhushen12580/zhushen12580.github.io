@@ -4,11 +4,90 @@
   
     
     <entry>
+      <title>国际站细化类目市场需求时序预测</title>
+      <link href="/2023/03/03/%E5%9B%BD%E9%99%85%E7%AB%99%E7%B1%BB%E7%9B%AE%E8%B6%8B%E5%8A%BF%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B/"/>
+      <url>/2023/03/03/%E5%9B%BD%E9%99%85%E7%AB%99%E7%B1%BB%E7%9B%AE%E8%B6%8B%E5%8A%BF%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>注：数据来源阿里巴巴国际站后台市场参谋，本次实战项目以2021年1月至2023年2月颗粒度为月的母婴、家具、宠物大类目下的所有四级类目的买家规模指数、供需比、转化率指标数据。  </p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数分业务 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>powerBI基础</title>
+      <link href="/2023/03/02/powerBI%E5%9F%BA%E7%A1%80%E7%AF%87/"/>
+      <url>/2023/03/02/powerBI%E5%9F%BA%E7%A1%80%E7%AF%87/</url>
+      
+        <content type="html"><![CDATA[<h3 id="运算符与新建列"><a href="#运算符与新建列" class="headerlink" title="运算符与新建列"></a>运算符与新建列</h3><p><strong>运算符</strong>  </p><p><img src="https://s1.ax1x.com/2023/03/02/ppFE72d.png" alt="code"></p><blockquote><p>文本加数值 = [字符]+[数值] # “520” + 1314 = 1834<br>文本连接数值 = [字符] &amp; [数值] # “520” &amp; 1314 = 5201314<br>数值连接数值 = [数值] &amp; [数值1] # 1314 &amp; 521 = 1314521  </p></blockquote><p><strong>新建列</strong>  </p><p>新建列的时候，当另一个需要计算的列来自其他表的时候，一定要指明表名是什么<br><img src="https://s1.ax1x.com/2023/03/02/ppFVgJg.png" alt="code"></p><h3 id="建模与关系函数"><a href="#建模与关系函数" class="headerlink" title="建模与关系函数"></a>建模与关系函数</h3><p>多端可以向一端索取，一端可以控制传递方向相同的多端数据<br><img src="https://s1.ax1x.com/2023/03/02/ppFZQfg.png" alt="code"></p><p><strong>Lookupvalue函数</strong><br>Lookupvalue函数：就是Vlookup<br>语法：Lookupvalue（把哪张表的哪个列拿过来，找那张表上的谁？，找自己表里的谁？）<br>```shell<br>单价 = LOOKUPVALUE(‘商品表’[进价],’商品表’[品名],’销售表’[商品名称])<br>```<br><img src="https://s1.ax1x.com/2023/03/02/ppFejVx.png" alt="code">  </p><p><strong>Related函数与Relatedtable函数</strong><br>Related函数：（多端找一端）（事实表找维度表）（数据表找基础表）<br>Relatedtable函数：（一端找多端）（维度表找事实表）（基础表找数据表）<br><img src="https://s1.ax1x.com/2023/03/02/ppFmJoV.png" alt="code">  </p><p><strong>多表建模关系</strong><br><img src="https://s1.ax1x.com/2023/03/02/ppFmUWF.png" alt="code">  </p><h3 id="度量值、Calculate引擎、Calculatetable筛选表"><a href="#度量值、Calculate引擎、Calculatetable筛选表" class="headerlink" title="度量值、Calculate引擎、Calculatetable筛选表"></a>度量值、Calculate引擎、Calculatetable筛选表</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数分技能 </tag>
+            
+            <tag> powerBI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>powerBI案例操作技巧</title>
+      <link href="/2023/03/02/powerBI%E6%A1%88%E4%BE%8B%E7%AF%87/"/>
+      <url>/2023/03/02/powerBI%E6%A1%88%E4%BE%8B%E7%AF%87/</url>
+      
+        <content type="html"><![CDATA[<h2 id="导入并处理数据"><a href="#导入并处理数据" class="headerlink" title="导入并处理数据"></a>导入并处理数据</h2><h3 id="处理文件夹中的所有工作簿"><a href="#处理文件夹中的所有工作簿" class="headerlink" title="处理文件夹中的所有工作簿"></a>处理文件夹中的所有工作簿</h3><p>获取数据-&gt;文件夹-&gt;填写路径-&gt;添加列—&gt;自定义列-&gt;写入以下代码—&gt;展开自定义列-&gt;筛选Kind列取Sheet值-&gt;展开data列-&gt;删除不需要的列-&gt;进行类型转换-&gt;关闭并应用<br>```shell<br>Excel.Workbook([Content],true)<br>```</p><h3 id="新建列和新建度量值的区别"><a href="#新建列和新建度量值的区别" class="headerlink" title="新建列和新建度量值的区别"></a>新建列和新建度量值的区别</h3><p><img src="https://s1.ax1x.com/2023/03/02/ppF4mAe.png" alt="code"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数分技能 </tag>
+            
+            <tag> powerBI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《市场研究实务与方法》笔记</title>
       <link href="/2023/03/01/%E3%80%8A%E5%B8%82%E5%9C%BA%E7%A0%94%E7%A9%B6%E5%AE%9E%E5%8A%A1%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B0/"/>
       <url>/2023/03/01/%E3%80%8A%E5%B8%82%E5%9C%BA%E7%A0%94%E7%A9%B6%E5%AE%9E%E5%8A%A1%E4%B8%8E%E6%96%B9%E6%B3%95%E3%80%8B%E7%AC%94%E8%AE%B0/</url>
       
-        <content type="html"><![CDATA[<h1 id="导论"><a href="#导论" class="headerlink" title="导论"></a>导论</h1><h2 id="市场营销的基本知识"><a href="#市场营销的基本知识" class="headerlink" title="市场营销的基本知识"></a>市场营销的基本知识</h2><h3 id="什么是市场"><a href="#什么是市场" class="headerlink" title="什么是市场"></a>什么是市场</h3><blockquote><p>市场是指对某些产品发生兴趣或可能有兴趣的所有买者和卖者  </p></blockquote><p>市场组成元素：消费者、购买力、购买意向</p><h3 id="市场营销的定义"><a href="#市场营销的定义" class="headerlink" title="市场营销的定义"></a>市场营销的定义</h3><blockquote><p>市场营销是指指导生产以及联结生产和消费的一系列经济活动。  </p></blockquote><p>市场营销在生产前：分析市场机会、选择目标市场、制订产品计划等。<br>市场营销在生产后：定价、选择最佳分销渠道、做广告、信息反馈等。</p><h3 id="市场营销观念"><a href="#市场营销观念" class="headerlink" title="市场营销观念"></a>市场营销观念</h3><blockquote><p>“市场营销观念”是一种以整体的市场营销活动做后援的顾客导向，其目的在于使顾客满足以达到企业的目标。  </p></blockquote><p>市场营销观念三要素：<br><strong>1.顾客导向</strong><br>市场营销观念认为了解顾客的需要、欲望和行为是一切市场营销活动的焦点，全心满足顾客，甚至有时“刺激”顾客的需要。  </p><p><strong>2.整体的市场营销活动</strong>  </p><blockquote><p>所有的市场营销活动，诸如人员推销、广告、产品开发、定价、分销渠道等等，均应配合协调，紧密结合，以扩大市场营销活动的总效果。    </p></blockquote><p><strong>3.注重利润</strong>  </p><blockquote><p>市场营销的目的在于为企业创造利润，它所重视的是利润，而不是销售量。  </p></blockquote><p>传统企业生存策略：先发展产品或服务，然后先“向前发展”将产品推销到市场。</p><p>市场营销观念下企业生产策略：先根据市场的情况拟订各种计划和策略，然后“向后倒退”来发展即可满足市场需要又有利润可图的产品或服务。  </p><p>一种企业哲学的转变：不在于生产某一种特定的产品或服务，而在于满足消费者的某种需要。</p><h3 id="市场营销与销售的区别"><a href="#市场营销与销售的区别" class="headerlink" title="市场营销与销售的区别"></a>市场营销与销售的区别</h3><p><img src="https://s1.ax1x.com/2023/03/01/ppPh3ee.png" alt="code"></p><h3 id="什么是市场营销管理"><a href="#什么是市场营销管理" class="headerlink" title="什么是市场营销管理"></a>什么是市场营销管理</h3><blockquote><p>所谓市场营销管理就是研究市场（顾客）的需要，运用企业的资源，比竞争对手更快捷更有效地满足这些需要，从而达到企业目标的一切活动。  </p></blockquote><p>市场营销观念认为<code>了解顾客需要</code>是一切市场营销活动的出发点。不过在研究市场需求过程中，切忌表面性、片面性、主观性。  </p><blockquote><p>值得借鉴的例子：<br>改革开放前我国企业都是根据国家下达的计划先将产品制造出来，然后才考虑如何推销。改革开放后我国实行市场经济，企业开始了解顾客的需要，然后再去生产产品。然而他们了解顾客需要往往不是基于科学的方法。<br>有的根据销售人员或维修部门反馈回来的意见，有的按照自己主观判断，有的根据自己过去工作积累下来的经验作决策，有的看其他企业成功的经验，有的根据第一把手对某件事的灵机一动就作决策。<br>这些企业也有成功的，不过比起用科学的市场研究方法去取得顾客需要方面的信息后做的决策，其失败的可能性要大很多。<br><img src="https://s1.ax1x.com/2023/03/01/ppPhOl6.png" alt="code"><br>企业一旦了解到消费者的某种需要后，就要比竞争对手更快捷更有效地生产出产品供应市场，这是十分重要的。（时机很重要~）</p></blockquote><h2 id="市场研究在营销管理中的角色"><a href="#市场研究在营销管理中的角色" class="headerlink" title="市场研究在营销管理中的角色"></a>市场研究在营销管理中的角色</h2><h3 id="市场研究的定义"><a href="#市场研究的定义" class="headerlink" title="市场研究的定义"></a>市场研究的定义</h3><blockquote><p>权威定义是：市场研究是将消费者、顾客及公众与厂商通过信息而联系起来的桥梁。  </p></blockquote><p>简单来说，运用科学方法，有系统地去收集和分析有关营销问题的信息，帮助企业解决营销管理决策的问题。</p><h3 id="市场研究的分类"><a href="#市场研究的分类" class="headerlink" title="市场研究的分类"></a>市场研究的分类</h3><p>市场研究分为连续性研究和专项研究两类。  </p><p>连续性研究：对某一营销管理问题定期开展连续性的数据收集并加以分析。如：电视收视率调查、消费者跟踪研究、广告跟踪研究等。  </p><p>专项研究：解决某一具体营销管理问题而委托专业市场研究公司进行的研究项目。它分为定量研究和定性研究两种。<br><img src="https://s1.ax1x.com/2023/03/01/ppi9AgK.png" alt="code"><br><img src="https://s1.ax1x.com/2023/03/01/ppi9k36.png" alt="code"></p><h3 id="本书采用的市场营销框架"><a href="#本书采用的市场营销框架" class="headerlink" title="本书采用的市场营销框架"></a>本书采用的市场营销框架</h3><blockquote><p>一个新产品开发出来到上市成功，必须植根于对消费者需要的深切洞察。<br><img src="https://s1.ax1x.com/2023/03/01/ppiPIBD.png" alt="code"><br><img src="https://s1.ax1x.com/2023/03/01/ppiPoHe.png" alt="code">  </p></blockquote><h1 id="使用习惯和态度研究"><a href="#使用习惯和态度研究" class="headerlink" title="使用习惯和态度研究"></a>使用习惯和态度研究</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="何谓使用习惯和态度研究"><a href="#何谓使用习惯和态度研究" class="headerlink" title="何谓使用习惯和态度研究"></a>何谓使用习惯和态度研究</h3><blockquote><p>消费习惯是人们对于某类商品某种商品品牌长期维持的一种消费需要，它是个人的一种稳定性消费行为，是人们在长期的生活中慢慢积累而成的，反过来它又对人们的购买行为有着重要的影响。  </p></blockquote><p>U&amp;A研究，即对消费者消费习惯和态度的研究，主要用于了解消费者产品使用的现状（习惯/态度）和潜在需求。  </p><h3 id="使用习惯和态度研究提供的信息"><a href="#使用习惯和态度研究提供的信息" class="headerlink" title="使用习惯和态度研究提供的信息"></a>使用习惯和态度研究提供的信息</h3><p>1.产品渗透率和渗透深度  </p><p>2.产品使用者和购买者的人口统计特征：（1）全部使用者和购买者的人口统计特征（2）重度使用者的人口统计特征（3）目标市场的人口统计特征（4）不同品牌最常使用者的人口统计特征。  </p><p>3.使用习惯和购买习惯：（1）产品品类（2）包装规格（3）频率（4）时间（5）地点（6）场合（7）数量（8）金额（9）使用方法  </p><p>4.影响购买选择的重要因素。  </p><p>5.主要竞争品牌的市场表现：（1）品牌认知（2）广告认知（3）品牌渗透率（4）品牌采用指数（5）品牌最常使用率（6）品牌试用指数和保持指数（7）品牌忠诚度（8）品牌形象（9）品牌的优势和弱点。  </p><p>6.对产品和品牌的态度。  </p><p>7.消费者的价值观念和生活方式。  </p><p>8.媒介接触习惯。  </p><h3 id="日常消费品使用习惯和态度研究问卷举例"><a href="#日常消费品使用习惯和态度研究问卷举例" class="headerlink" title="日常消费品使用习惯和态度研究问卷举例"></a>日常消费品使用习惯和态度研究问卷举例</h3>]]></content>
+        <content type="html"><![CDATA[<h1 id="导论"><a href="#导论" class="headerlink" title="导论"></a>导论</h1><h2 id="市场营销的基本知识"><a href="#市场营销的基本知识" class="headerlink" title="市场营销的基本知识"></a>市场营销的基本知识</h2><h3 id="什么是市场"><a href="#什么是市场" class="headerlink" title="什么是市场"></a>什么是市场</h3><blockquote><p>市场是指对某些产品发生兴趣或可能有兴趣的所有买者和卖者  </p></blockquote><p>市场组成元素：消费者、购买力、购买意向</p><h3 id="市场营销的定义"><a href="#市场营销的定义" class="headerlink" title="市场营销的定义"></a>市场营销的定义</h3><blockquote><p>市场营销是指指导生产以及联结生产和消费的一系列经济活动。  </p></blockquote><p>市场营销在生产前：分析市场机会、选择目标市场、制订产品计划等。<br>市场营销在生产后：定价、选择最佳分销渠道、做广告、信息反馈等。</p><h3 id="市场营销观念"><a href="#市场营销观念" class="headerlink" title="市场营销观念"></a>市场营销观念</h3><blockquote><p>“市场营销观念”是一种以整体的市场营销活动做后援的顾客导向，其目的在于使顾客满足以达到企业的目标。  </p></blockquote><p>市场营销观念三要素：<br><strong>1.顾客导向</strong><br>市场营销观念认为了解顾客的需要、欲望和行为是一切市场营销活动的焦点，全心满足顾客，甚至有时“刺激”顾客的需要。  </p><p><strong>2.整体的市场营销活动</strong>  </p><blockquote><p>所有的市场营销活动，诸如人员推销、广告、产品开发、定价、分销渠道等等，均应配合协调，紧密结合，以扩大市场营销活动的总效果。    </p></blockquote><p><strong>3.注重利润</strong>  </p><blockquote><p>市场营销的目的在于为企业创造利润，它所重视的是利润，而不是销售量。  </p></blockquote><p>传统企业生存策略：先发展产品或服务，然后先“向前发展”将产品推销到市场。</p><p>市场营销观念下企业生产策略：先根据市场的情况拟订各种计划和策略，然后“向后倒退”来发展即可满足市场需要又有利润可图的产品或服务。  </p><p>一种企业哲学的转变：不在于生产某一种特定的产品或服务，而在于满足消费者的某种需要。</p><h3 id="市场营销与销售的区别"><a href="#市场营销与销售的区别" class="headerlink" title="市场营销与销售的区别"></a>市场营销与销售的区别</h3><p><img src="https://s1.ax1x.com/2023/03/01/ppPh3ee.png" alt="code"></p><h3 id="什么是市场营销管理"><a href="#什么是市场营销管理" class="headerlink" title="什么是市场营销管理"></a>什么是市场营销管理</h3><blockquote><p>所谓市场营销管理就是研究市场（顾客）的需要，运用企业的资源，比竞争对手更快捷更有效地满足这些需要，从而达到企业目标的一切活动。  </p></blockquote><p>市场营销观念认为<code>了解顾客需要</code>是一切市场营销活动的出发点。不过在研究市场需求过程中，切忌表面性、片面性、主观性。  </p><blockquote><p>值得借鉴的例子：<br>改革开放前我国企业都是根据国家下达的计划先将产品制造出来，然后才考虑如何推销。改革开放后我国实行市场经济，企业开始了解顾客的需要，然后再去生产产品。然而他们了解顾客需要往往不是基于科学的方法。<br>有的根据销售人员或维修部门反馈回来的意见，有的按照自己主观判断，有的根据自己过去工作积累下来的经验作决策，有的看其他企业成功的经验，有的根据第一把手对某件事的灵机一动就作决策。<br>这些企业也有成功的，不过比起用科学的市场研究方法去取得顾客需要方面的信息后做的决策，其失败的可能性要大很多。<br><img src="https://s1.ax1x.com/2023/03/01/ppPhOl6.png" alt="code"><br>企业一旦了解到消费者的某种需要后，就要比竞争对手更快捷更有效地生产出产品供应市场，这是十分重要的。（时机很重要~）</p></blockquote><h2 id="市场研究在营销管理中的角色"><a href="#市场研究在营销管理中的角色" class="headerlink" title="市场研究在营销管理中的角色"></a>市场研究在营销管理中的角色</h2><h3 id="市场研究的定义"><a href="#市场研究的定义" class="headerlink" title="市场研究的定义"></a>市场研究的定义</h3><blockquote><p>权威定义是：市场研究是将消费者、顾客及公众与厂商通过信息而联系起来的桥梁。  </p></blockquote><p>简单来说，运用科学方法，有系统地去收集和分析有关营销问题的信息，帮助企业解决营销管理决策的问题。</p><h3 id="市场研究的分类"><a href="#市场研究的分类" class="headerlink" title="市场研究的分类"></a>市场研究的分类</h3><p>市场研究分为连续性研究和专项研究两类。  </p><p>连续性研究：对某一营销管理问题定期开展连续性的数据收集并加以分析。如：电视收视率调查、消费者跟踪研究、广告跟踪研究等。  </p><p>专项研究：解决某一具体营销管理问题而委托专业市场研究公司进行的研究项目。它分为定量研究和定性研究两种。  </p><p><img src="https://s1.ax1x.com/2023/03/01/ppi9AgK.png" alt="code"><br><img src="https://s1.ax1x.com/2023/03/01/ppi9k36.png" alt="code"></p><h3 id="本书采用的市场营销框架"><a href="#本书采用的市场营销框架" class="headerlink" title="本书采用的市场营销框架"></a>本书采用的市场营销框架</h3><blockquote><p>一个新产品开发出来到上市成功，必须植根于对消费者需要的深切洞察。  </p></blockquote><p><img src="https://s1.ax1x.com/2023/03/01/ppiPIBD.png" alt="code"><br><img src="https://s1.ax1x.com/2023/03/01/ppiPoHe.png" alt="code">  </p><h1 id="使用习惯和态度研究"><a href="#使用习惯和态度研究" class="headerlink" title="使用习惯和态度研究"></a>使用习惯和态度研究</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="何谓使用习惯和态度研究"><a href="#何谓使用习惯和态度研究" class="headerlink" title="何谓使用习惯和态度研究"></a>何谓使用习惯和态度研究</h3><blockquote><p>消费习惯是人们对于某类商品某种商品品牌长期维持的一种消费需要，它是个人的一种稳定性消费行为，是人们在长期的生活中慢慢积累而成的，反过来它又对人们的购买行为有着重要的影响。  </p></blockquote><p>U&amp;A研究，即对消费者消费习惯和态度的研究，主要用于了解消费者产品使用的现状（习惯/态度）和潜在需求。  </p><h3 id="使用习惯和态度研究提供的信息"><a href="#使用习惯和态度研究提供的信息" class="headerlink" title="使用习惯和态度研究提供的信息"></a>使用习惯和态度研究提供的信息</h3><p>1.产品渗透率和渗透深度  </p><p>2.产品使用者和购买者的人口统计特征：（1）全部使用者和购买者的人口统计特征（2）重度使用者的人口统计特征（3）目标市场的人口统计特征（4）不同品牌最常使用者的人口统计特征。  </p><p>3.使用习惯和购买习惯：（1）产品品类（2）包装规格（3）频率（4）时间（5）地点（6）场合（7）数量（8）金额（9）使用方法  </p><p>4.影响购买选择的重要因素。  </p><p>5.主要竞争品牌的市场表现：（1）品牌认知（2）广告认知（3）品牌渗透率（4）品牌采用指数（5）品牌最常使用率（6）品牌试用指数和保持指数（7）品牌忠诚度（8）品牌形象（9）品牌的优势和弱点。  </p><p>6.对产品和品牌的态度。  </p><p>7.消费者的价值观念和生活方式。  </p><p>8.媒介接触习惯。  </p><h3 id="日常消费品使用习惯和态度研究问卷举例"><a href="#日常消费品使用习惯和态度研究问卷举例" class="headerlink" title="日常消费品使用习惯和态度研究问卷举例"></a>日常消费品使用习惯和态度研究问卷举例</h3><p>略~</p><h2 id="识别市场机会"><a href="#识别市场机会" class="headerlink" title="识别市场机会"></a>识别市场机会</h2><h3 id="市场机会的SWOT分析"><a href="#市场机会的SWOT分析" class="headerlink" title="市场机会的SWOT分析"></a>市场机会的SWOT分析</h3>]]></content>
       
       
       <categories>
