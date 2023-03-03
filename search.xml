@@ -8,7 +8,7 @@
       <link href="/2023/03/03/%E5%9B%BD%E9%99%85%E7%AB%99%E7%B1%BB%E7%9B%AE%E8%B6%8B%E5%8A%BF%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B/"/>
       <url>/2023/03/03/%E5%9B%BD%E9%99%85%E7%AB%99%E7%B1%BB%E7%9B%AE%E8%B6%8B%E5%8A%BF%E6%97%B6%E5%BA%8F%E9%A2%84%E6%B5%8B/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>注：数据来源阿里巴巴国际站后台市场参谋，本次实战项目以2021年1月至2023年2月颗粒度为月的母婴、家具、宠物大类目下的所有四级类目的买家规模指数、供需比、转化率指标数据。  </p></blockquote>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>注：数据来源阿里巴巴国际站后台市场参谋，本次实战项目以2021年1月至2023年2月颗粒度为月的母婴、家具、宠物大类目下的所有四级类目的买家规模指数、供需比、转化率指标数据。  </p></blockquote><p>大纲：<br>1.市场需求预测理论<br>2.时序预测算法模型介绍及评估指标介绍<br>3.不同算法模型python实战&amp;autoTS库实战</p>]]></content>
       
       
       <categories>
@@ -60,7 +60,7 @@
       <link href="/2023/03/02/powerBI%E6%A1%88%E4%BE%8B%E7%AF%87/"/>
       <url>/2023/03/02/powerBI%E6%A1%88%E4%BE%8B%E7%AF%87/</url>
       
-        <content type="html"><![CDATA[<h2 id="导入并处理数据"><a href="#导入并处理数据" class="headerlink" title="导入并处理数据"></a>导入并处理数据</h2><h3 id="处理文件夹中的所有工作簿"><a href="#处理文件夹中的所有工作簿" class="headerlink" title="处理文件夹中的所有工作簿"></a>处理文件夹中的所有工作簿</h3><p>获取数据-&gt;文件夹-&gt;填写路径-&gt;添加列—&gt;自定义列-&gt;写入以下代码—&gt;展开自定义列-&gt;筛选Kind列取Sheet值-&gt;展开data列-&gt;删除不需要的列-&gt;进行类型转换-&gt;关闭并应用<br>```shell<br>Excel.Workbook([Content],true)<br>```</p><h3 id="新建列和新建度量值的区别"><a href="#新建列和新建度量值的区别" class="headerlink" title="新建列和新建度量值的区别"></a>新建列和新建度量值的区别</h3><p><img src="https://s1.ax1x.com/2023/03/02/ppF4mAe.png" alt="code"></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="导入并处理数据"><a href="#导入并处理数据" class="headerlink" title="导入并处理数据"></a>导入并处理数据</h2><h3 id="处理文件夹中的所有工作簿"><a href="#处理文件夹中的所有工作簿" class="headerlink" title="处理文件夹中的所有工作簿"></a>处理文件夹中的所有工作簿</h3><p>获取数据-&gt;文件夹-&gt;填写路径-&gt;添加列—&gt;自定义列-&gt;写入以下代码—&gt;展开自定义列-&gt;筛选Kind列取Sheet值-&gt;展开data列-&gt;删除不需要的列-&gt;进行类型转换-&gt;关闭并应用<br><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Excel.Workbook([Content],true)</span><br></pre></td></tr></table></figure></p><h3 id="新建列和新建度量值的区别"><a href="#新建列和新建度量值的区别" class="headerlink" title="新建列和新建度量值的区别"></a>新建列和新建度量值的区别</h3><p><img src="https://s1.ax1x.com/2023/03/02/ppF4mAe.png" alt="code"></p>]]></content>
       
       
       <categories>
