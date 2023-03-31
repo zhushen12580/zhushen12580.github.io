@@ -1,149 +1,83 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>AI应用导航</title>
-	<meta content="telephone=no,email=no" name="format-detection">
-	<meta content="yes" name="apple-mobile-web-app-capable">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-touch-fullscreen" content="yes">
-	<link rel="shortcut icon" href="文锋logo.png">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/yidong.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/yidong.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="最新发布的AI产品导航网站">
-	<meta name="keywords" content="AI应用导航">
-		
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./assets/文锋logo.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>AI应用导航</title>
 </head>
 
 <body>
+    <div id="app">
+        <div class="left-nav">
+            <div class="head-image" :style="{backgroundImage:'url('+settings.headImage+')'}"></div>
+        </div>
+        <div class="main-container">
 
-	<!-- 搜索栏start -->
-	<div class="baidu baidu-2">
-		<form name="f" action="https://cn.bing.com/search" target="_blank">
-			<div class="Select-box-2" id="baidu">
-				<ul>
-					<li class="this_s">必 应</li>
-					<li class="miji_s">duck</li>
-					<li class="bing_s">必 应</li>
-					<li class="google_s">谷 歌</li>
-					<li class="baidu_s">百 度</li>
-					<li class="ff_s">Y 搜</li>
-				</ul>
-			</div>
-			<div class="in5">
-				<input name="q" id="kw-2" maxlength="100" autocomplete="off" type="text">
-				<div class="qingkong" id="qingkong" title="清空">x</div>
-			</div>
-			<input value="搜 索" id="su-2" type="submit">
-		</form>
-		<ul class="keylist"></ul>
-	</div>
-	<!-- 搜索栏end -->
+            <div class="center-container">
+                <!-- 搜索框部分 -->
+                <div class="search-box" v-if="settings.searchEngine">
+                    <!-- 搜索建议框 -->
+                    <div class="advice_box" v-if="advices.length>0">
+                        <div :class="index === advice_selected?'selected':''" class="advice_item" @mouseenter="advice_selected = index" v-for="advice,index in advices" @click="advice_clicked(index)">
+                            {{advice}}</div>
+                    </div>
+                    <!-- 选择搜索引擎 -->
+                    <div :class="show_engine_box?'show':'hide'" class="engine-box" @blur='hideEngineBox(30)' tabindex="0" hidefocus="true" v-show="show_engine_box === true">
+                        <div class="engine" v-for="engine,id in getEngines()" @click="settings.searchEngine.selected = id;hideEngineBox()">
+                            <div class="icon" :style="{backgroundImage:'url('+engine.icon+')',backgroundColor:engine.mainColor}"></div>
+                            <div class="name" >{{engine.name}}</div>
+                        </div>
+                        <div class="engine not_show" v-for="i in 4"></div>
+                    </div>
+                    <!-- 搜索框左侧图标 -->
+                    <div class="search-engins" :style="{backgroundColor:getSelectedEngine().mainColor}"
+                        @click="show_engine_box?hideEngineBox():showEngineBox()">
+                        <!-- @click="show_engine_box?hideEngineBox():showEngineBox()"> -->
+                        <div class="selected-icon" :style="{backgroundImage:'url('+getSelectedEngine().icon+')'}"></div>
+                        <div class="engine-name" :style="{color:getSelectedEngine().textColor}">
+                            {{getSelectedEngine().name}}</div>
+                        <div class="show-more"></div>
+                    </div>
+                    <!-- 搜索框主体 -->
+                    <input id="search-input" autocomplete="off" onkeydown="return input_keydown(event)"  oninput="showAdvice()" />
+                    <!-- 搜索按钮 -->
+                    <div class="search-btn" @click="search()"></div>
+                </div>
+                <!-- 网站列表部分 -->
+                <div class="sites-container">
+                    <div class="second-kind" v-for="kind_val,kind_name,_ in sitesData">
+                        <div class="kind-name">
+                            <div class="icon" :style="{backgroundImage:'url('+kind_val.icon+')'}"></div>
+                            <div class="name">{{kind_name}}</div>
+                        </div>
+                        <div class="sites-box">
+                            <div @click="open(site_val.url)" class="site-box" v-for="site_val in kind_val.data">
+                                <div class="icon" :data-original="site_val.icon">
+                                </div>
+                                <div class="info">
+                                    <div class="name">{{site_val.name}}</div>
+                                    <div class="describe">{{site_val.describe}}</div>
+                                </div>
+                            </div>
+                            <div class="site-box not_show" v-for="i in 10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	<!-- 内容start -->
-	<div class="body">
-		<div class="content">
-			<div class="jianjie">
-				<div class="jj-list">
-					<div class="jj-list-tit">AI · 其他</div>
-					<ul class="jj-list-con _b">
-						<li><a href="https://www.wolai.com/qi94EjPJFFX5Wwfiowa3SU" class="link-3" target="_blank" rel="nofollow">AI应用指南</a></li>
-						<li><a href="https://www.photoroom.com/" class="link-3" target="_blank" rel="nofollow" title="AI图片处理">PhotoRoom</a></li>
-						<li><a href="https://www.zhihu.com/roundtable/zhiyexinfengkou" class="link-3" target="_blank" rel="nofollow">AIGC圆桌</a></li>
-						<li><a href="https://www.bookai.chat/" class="link-3" target="_blank" rel="nofollow" title="依据输入的书名回答书本的问题">BookAI</a></li>
-						<li><a href="https://www.chatbase.co/" class="link-3" target="_blank" rel="nofollow" title="用你的数据训练chatGPT">ChatBase</a></li>
-						<li><a href="https://www.designuuu.com/" class="link-3" target="_blank" rel="nofollow">AIGC社区</a></li>
-						<li><a href="https://newzone.top/chatgpt/" class="link-3" target="_blank" rel="nofollow">chatGPT提示词</a></li>
-						<li><a href="https://discord.com/" class="link-3" target="_blank" rel="nofollow">Discord</a></li>				
-						<li><a href="https://openai.com/" class="link-3" target="_blank" rel="nofollow">OpenAI</a></li>
-					</ul>
-				</div>
-				<div class="jj-list">
-					<div class="jj-list-tit">AI · 文本</div>
-					<ul class="jj-list-con _b">
-						<li><a href="https://chat.openai.com/chat" class="link-3" target="_blank" rel="nofollow" title="chatgpt官网">chatGPT</a></li>
-						<li><a href="https://www.notion.so/product/ai" class="link-3" target="_blank" rel="nofollow">Notion AI</a></li>
-						<li><a href="https://eagle-ai.nikong.cn/home?f_url=wz.aidaohang.com.cn" class="link-3" target="_blank" rel="nofollow" title="- 基于ChatGPT的文案创作助手 -">Eagle GPT</a></li>
-						<li><a href="https://open-gpt.app/en" class="link-3" target="_blank" rel="nofollow" title="创建gpt应用">Open-gpt</a></li>
-						<li><a href="http://ai.sklccc.com/AIGC-X/#/" class="link-3" target="_blank" rel="nofollow" title="AI文本识别">AIGC-X</a></li>
-						<li><a href="https://chatgptproxy.me/?f_url=wz.aidaohang.com.cn#/" class="link-3" target="_blank" rel="nofollow">chatGPT快速</a></li>
-						<li><a href="https://www.wolai.com/dfP4WcDRbqPjCouLEFNtJS" class="link-3" target="_blank" rel="nofollow">chatGPT调教</a></li>
-						<li><a href="https://bard.google.com/" class="link-3" target="_blank" rel="nofollow">Bard</a></li>
-						<li><a href="https://outplayhq.com/en-us" class="link-3" target="_blank" rel="nofollow">OutPlay</a></li>
-					</ul>
-				</div>
-				<div class="jj-list">
-					<div class="jj-list-tit">AI · 办公</div>
-					<ul class="jj-list-con _b">
-						<li><a href="https://chatppt.yoo-ai.com/" class="link-3" target="_blank" rel="nofollow" title="通过问答快速制作PPT">chatPPT</a></li>
-						<li><a href="https://chatexcel.com/?f_url=wz.aidaohang.com.cn" class="link-3" target="_blank" rel="nofollow" title="使用自然语言操作excel">chatExcel</a></li>
-						<li><a href="https://github.com/features/copilot" class="link-3" target="_blank" rel="nofollow" title="AI代码辅助工具">copilot</a></li>
-						<li><a href="https://fsys.app/" class="link-3" target="_blank" rel="nofollow" title="AI翻译工具">风声雨声</a></li>
-						<li><a href="https://knowledge-public.streamlit.app/?f_url=wz.aidaohang.com.cn" class="link-3" target="_blank" rel="nofollow" title="AI自定义知识库">streamlit</a></li>
-						<li><a href="https://chrome.google.com/webstore/detail/ai-data-sidekick/ddndchbffgdgedjaehmipolebhoaacmk" class="link-3" target="_blank" rel="nofollow" title="AI辅助写SQL">A.I.DATA</a></li>
-						<li><a href="https://ai.xiezhoubao.cn/zh?f=wz.aidaohang.com.cn" class="link-3" target="_blank" rel="nofollow" title="AI在线协作写作">周报生成器</a></li>
-						<li><a href="https://loop.microsoft.com/" class="link-3" target="_blank" rel="nofollow">Loop</a></li>
-						<li><a href="https://www.linkedin.com/" class="link-3" target="_blank" rel="nofollow" title="AI帮你写JD和CV">领英AI助手</a></li>
-					</ul>
-				</div>
-				<div class="jj-list">
-					<div class="jj-list-tit">AI · 图像</div>
-					<ul class="jj-list-con _b">
-						<li><a href="https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F" class="link-3" target="_blank" rel="nofollow">Midjourney</a></li>
-						<li><a href="https://stability.ai/" class="link-3" target="_blank" rel="nofollow">Stable Diffusion</a></li>
-                        <li><a href="https://openai.com/product/dall-e-2" class="link-3" target="_blank" rel="nofollow">DALL·E 2</a>
-						<li><a href="https://novelai.net/" class="link-3" target="_blank" rel="nofollow" title="定制角色剧情AI绘画">Novelai</a></li>
-						<li><a href="https://www.bing.com/create?toWww=1&redig=7CF2AA61F7B3407E8FEE32101E994E3F" class="link-3" target="_blank" rel="nofollow">Bing AI</a></li>
-						<li><a href="https://firefly.adobe.com/" class="link-3" target="_blank" rel="nofollow" title="adobe出品">Firefly</a></li>
-						<li><a href="https://promptbase.com/" class="link-3" target="_blank" rel="nofollow" title="多个模型提示词建议">PromptBase</a></li>
-						<li><a href="https://www.aigallery.top/" class="link-3" target="_blank" rel="nofollow" title="可获取海量图库提示词">Aigallery</a></li>
-						<li><a href="https://6pen.art/" class="link-3" target="_blank" rel="nofollow" title="可选多个绘画模型">6pen</a></li>
-						</li>
-					</ul>
-				</div>
-				<div class="jj-list">
-					<div class="jj-list-tit">AI · 音频</div>
-					<ul class="jj-list-con _b">
-						<li><a href="https://www.brain.fm/" class="link-3" target="_blank" rel="nofollow">brain</a></li>
-						<li><a href="https://murf.ai/" class="link-3" target="_blank" rel="nofollow">Murf</a></li>
-						<li><a href="https://soundraw.io/" class="link-3" target="_blank" rel="nofollow">SounDraw</a></li>
-						<li><a href="https://endel.io/" class="link-3" target="_blank" rel="nofollow">Endel</a></li>
-						<li><a href="https://www.riffusion.com/" class="link-3" target="_blank" rel="nofollow">Riffusion</a></li>
-						<li><a href="https://www.papercup.com/" class="link-3" target="_blank" rel="nofollow">PaperCup</a></li>
-						<li><a href="https://www.voicemod.net/" class="link-3" target="_blank" rel="nofollow">VoiceMod</a></li>
-						<li><a href="https://boomy.com/" class="link-3" target="_blank" rel="nofollow">Boomy</a></li>
-						<li><a href="https://www.lalal.ai/?fp_ref=signup-now&gclid=CjwKCAjw_YShBhAiEiwAMomsEDCFZoVdZnMhXA7kmylaVU8KsMR8CyIUX1hnqGPm1RLBqWLwWU14ihoCY6UQAvD_BwE" class="link-3" target="_blank" rel="nofollow">lalal</a></li>
-					</ul>
-				</div>
-				<div class="jj-list">
-					<div class="jj-list-tit">AI · 视频</div>
-					<ul class="jj-list-con _b">
-						<li><a href="https://aigc.yizhentv.com/" class="link-3" target="_blank" rel="nofollow" title="A视频创作，快速图文转视频，效率百倍提升">一帧秒创</a></li>
-						<li><a href="https://zenvideo.qq.com/" class="link-3" target="_blank" rel="nofollow">腾讯智影</a></li>
-						<li><a href="https://modelscope.cn/studios/damo/text-to-video-synthesis/summary" class="link-3" target="_blank" rel="nofollow" title="达摩院出品">达摩院AI</a></li>
-						<li><a href="https://runwayml.com/" class="link-3" target="_blank" rel="nofollow">RunAway</a></li>
-						<li><a href="https://cascadeur.com/" class="link-3" target="_blank" rel="nofollow">Cascadeur</a></li>
-						<li><a href="https://www.d-id.com/" class="link-3" target="_blank" rel="nofollow">D-ID</a></li>
-						<li><a href="https://www.synthesia.io/?via=welcometo" class="link-3" target="_blank" rel="nofollow">Synthesia</a></li>
-						<li><a href="https://www.peech-ai.com/aboutus" class="link-3" target="_blank" rel="nofollow">Peech</a></li>
-						<li><a href="https://pollinations.ai/" class="link-3" target="_blank" rel="nofollow">Pollinations</a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- 内容end -->
-
-	</div>
-		<div class="footer">
-			<a href="http://yunpan.zhushen12580.top/" style="color:#ffffff;" target="_blank" rel="nofollow">"人工智能带来了很多机会和挑战，我们必须做好准备，以应对它所带来的一切。" - 弗朗西丝卡·罗莎</a>
-		</div>
-		<!-- 底部版权end -->
-	</div>
+    </div>
 </body>
+<footer>
+    <script src="./js/vue3.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery.lazyload.min.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/index.js"></script>
+</footer>
 
 </html>
